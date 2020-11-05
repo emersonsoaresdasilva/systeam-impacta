@@ -21,7 +21,7 @@ class Equipe(object):
 
 class Partida(object):
 
-    def __init__(self, equipe_casa, pontos_casa, equipe_visita, pontos_visita):
+    def __init__(self, equipe_casa, equipe_visita, pontos_casa,  pontos_visita)
         self.equipe_casa = equipe_casa
         self.equipe_visita = equipe_visita
         self.pontos_casa = pontos_casa
