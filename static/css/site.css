@@ -1,0 +1,20 @@
+body{
+    font-family: monospace;
+}
+body footer{
+    text-align: center;
+    padding: 10px;
+    color: black;
+}
+table, td, th {
+    text-align: center;
+}
+a:link {text-decoration:none;}
+
+body > main > table > thead > tr > th{
+    font-size: 25px;
+}
+.form-control {
+    -webkit-box-shadow: 0 3px 10px -6px #000;
+    box-shadow: 0 3px 10px -6px #000;
+}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block main %}
+<table class="table table-sm">
+    <thead>
+        <th colspan="6">Tabela de Classificação | Série A | Brasileirão 2020</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="C">Clube</td>
+            <td class="P">Pontos</td>
+            <td class="J">Jogos</td>
+            <td class="V">Vitórias</td>
+            <td class="E">Empates</td>
+            <td class="D">Derrotas</td>
+        </tr>
+        {% for e in equipes %}
+        <tr>
+            <td class="Clube">
+                <!-- Quero a logo do time. -->
+                {% if admin %}
+                <a href="/admin/equipes/{{ e.sigla }}">{{ e.nome }}</a>
+                {% else %}
+                <a href="/detalhes/{{ e.sigla }}">{{ e.nome }}</a>
+                {% endif %}
+            </td>
+            <td class="Pontos">25</td>
+            <td class="Jogos">10</td>
+            <td class="Vitórias">10</td>
+            <td class="Empates">10</td>
+            <td class="Derrotas">0</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

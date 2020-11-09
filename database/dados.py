@@ -7,6 +7,8 @@ EQUIPES = [
     Equipe('Equipe 4', 'EQ4', 'Vitória-ES'),
     Equipe('Equipe 5', 'EQ5', 'Campinas-SP')
 ]
+
+
 PARTIDAS = [
     Partida(EQUIPES[0], EQUIPES[1], 1, 0),
     Partida(EQUIPES[1], EQUIPES[0], 2, 5),
@@ -29,6 +31,7 @@ PARTIDAS = [
     Partida(EQUIPES[3], EQUIPES[4], 0, 0),
     Partida(EQUIPES[4], EQUIPES[3], 0, 0)
 ]
+
 USUARIOS = [
     Usuario('admin@admin.com', 'admin123*')
 ]
