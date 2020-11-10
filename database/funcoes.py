@@ -9,7 +9,7 @@ def pegar_equipe(sigla='*'):
             if e.sigla == sigla: return e 
     return False
 
-def calcular_pontos_da_equipe(Equipe):
+def contar_pontos_da_equipe(Equipe):
     pontos = 0
     partidas = listar_partidas_da_equipe(Equipe)
     for p in partidas:
@@ -22,6 +22,11 @@ def calcular_pontos_da_equipe(Equipe):
             if p.pontos_casa < p.pontos_visita:
                 pontos += 3
     return pontos
+
+def contar_jogos_da_equipe(Equipe):
+    pontos = 0
+    partidas = listar_partidas_da_equipe(Equipe)
+    return len(partidas)
 
 
 

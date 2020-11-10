@@ -12,13 +12,16 @@ admin_bp = Blueprint(
 def home():
     equipes = pegar_equipe()
     pontuacao = {}
+    jogos = {}
     for e in equipes:
-        pontuacao[e.sigla] = calcular_pontos_da_equipe(e)
+        pontuacao[e.sigla] = contar_pontos_da_equipe(e)
+        jogos[e.sigla] = contar_jogos_da_equipe(e)
 
     return render_template( 
         'home.html',
         equipes=equipes,
         pontuacao=pontuacao,
+        jogos=jogos,
         admin=True
         )
 
