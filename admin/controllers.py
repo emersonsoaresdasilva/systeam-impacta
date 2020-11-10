@@ -10,12 +10,10 @@ admin_bp = Blueprint(
 
 @admin_bp.route('/')
 def home():
-    carregar(Equipe)
-    carregar(Partida)
-    equipes = Equipe.listar()
+    equipes = pegar_equipe()
     pontuacao = {}
     for e in equipes:
-        pontuacao[e.sigla] = calcular_pontos(e)
+        pontuacao[e.sigla] = calcular_pontos_da_equipe(e)
 
     return render_template( 
         'home.html',
@@ -27,8 +25,7 @@ def home():
 
 @admin_bp.route('/equipes')
 def equipes():
-    carregar(Equipe)
-    equipes = Equipe.listar()
+    equipes = pegar_equipe()
     return render_template( 
         'equipes.html',
         equipes=equipes,
@@ -41,8 +38,7 @@ def equipe(sigla):
 
 @admin_bp.route('/partidas')
 def partidas():
-    carregar(Partida)
-    partidas = Partida.listar()
+    partidas = pegar_partida()
     return render_template( 
         'partidas.html',
         partidas=partidas,

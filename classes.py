@@ -60,11 +60,3 @@ class Partida(object):
     @classmethod
     def listar(cls):
         return cls.__dados
-
-    @classmethod
-    def listar_da_equipe(cls, Equipe):
-        partidas = []
-        for p in cls.__dados:
-            if p.equipe_casa.sigla == Equipe.sigla or p.equipe_visita.sigla == Equipe.sigla:
-                partidas.append(p)
-        return partidas

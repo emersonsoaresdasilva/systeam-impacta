@@ -10,12 +10,10 @@ website_bp = Blueprint(
 
 @website_bp.route('/')
 def home():
-    carregar(Equipe)
-    carregar(Partida)
-    equipes = Equipe.listar()
+    equipes = pegar_equipe()
     pontuacao = {}
     for e in equipes:
-        pontuacao[e.sigla] = calcular_pontos(e)
+        pontuacao[e.sigla] = calcular_pontos_da_equipe(e)
 
     return render_template( 
         'home.html',
@@ -25,19 +23,21 @@ def home():
 
 @website_bp.route('/detalhes/<sigla>')
 def detalhes(sigla):
-    return "PÁGINA DE DETALHES " + sigla
+    equipe = pegar_equipe(sigla)
+    if equipe:
+        return "PÁGINA DE DETALHES " + equipe.sigla
+    return "Equipe não encontrada"
 
 @website_bp.route('/entrar', methods=['GET', 'POST'])
 def entrar():
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
-
-        user = [x for x in USUARIOS if x.email == email][0]
+        user = pegar_usuario(email, senha)
         if user and user.senha == senha:
             return redirect('admin')
-        return redirect('entrar')
-
+        return redirect('entrar')#DEVE-SE INFORMAR AO USUARIO QUE ELE ERROU O USER OU SENHA
+    #IF GET:
     return render_template(
         'entrar.html'
     )
