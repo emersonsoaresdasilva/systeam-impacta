@@ -22,7 +22,6 @@ def home():
         admin=True
         )
 
-
 @admin_bp.route('/equipes')
 def equipes():
     equipes = pegar_equipe()
@@ -36,6 +35,34 @@ def equipes():
 def equipe(sigla):
     return "página de exibição da equipe" + sigla 
 
+@admin_bp.route('/equipes/criar', methods=['GET', 'POST'])
+def equipe_criar():
+    funcao = 'Criar'
+    criar = True
+    if request.method == 'POST':
+        nome = request.form['nome']
+        sigla = request.form['sigla']
+        local = request.form['local']
+
+        e = Equipe(nome, sigla, local)
+        criar_equipe(e)
+        return redirect('/')
+
+    return render_template(
+        'form_equipes.html',
+        equipe=equipe,
+        funcao=funcao,
+        criar=criar
+    )
+
+@admin_bp.route('/equipes/alterar/<sigla>')
+def equipe_alterar(sigla):
+
+    equipe = pegar_equipe(sigla)
+    funcao = 'Alterar'
+
+    return render_template('form_equipes.html', equipe=equipe, funcao=funcao)
+
 @admin_bp.route('/partidas')
 def partidas():
     partidas = pegar_partida()
@@ -48,6 +75,14 @@ def partidas():
 @admin_bp.route('/partidas/<X>')
 def partida(X):
     return "página de exibição da partida" + X 
+
+@admin_bp.route('/partidas/criar')
+def partida_criar():
+    return render_template('form_partidas.html')
+
+@admin_bp.route('/partidas/alterar/<sigla>')
+def partida_alterar(sigla):
+    return render_template('form_partidas.html')
 
 @admin_bp.route('/sair')
 def sair():

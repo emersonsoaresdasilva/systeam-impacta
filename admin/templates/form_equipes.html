@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block main %}
+{% if criar %}
+<form method="POST" class="text-center border border-light p-5" novalidate>
+    <div class="col-md-2 offset-md-5">
+    <div class="form-group">
+        <label for="validationServer013">Nome</label>
+        <input type="text" class="form-control is-valid" id="validationServer013" name='nome' value='{{ equipe.nome }}' placeholder="Nome" required>
+        <div class="valid-feedback">Nome da equipe inserido!</div>
+    </div>
+    <div class="form-group">
+        <label for="validationServer023">Sigla</label>
+        <input type="text" class="form-control is-valid" id="validationServer023" name='sigla' value='{{ equipe.sigla }}' placeholder="Sigla" required>
+        <div class="valid-feedback">Sigla da equipe inserido!</div>
+    </div>
+    <div class="form-group">
+        <label for="validationServer023">Local</label>
+        <input type="text" class="form-control is-valid" id="validationServer023" name='local' value='{{ equipe.local }}'placeholder="Local" required>
+        <div class="valid-feedback">Local da equipe inserido!</div>
+    </div>
+        <button type="submit" class="btn btn-success btn-block my-4">{{ funcao }}</button>
+</form>
+{% endif %}
+{% endblock %}
