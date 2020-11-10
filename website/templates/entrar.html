@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block main %}
-<form method="POST" class="text-center border border-light p-5" novalidate>
+<form method="POST" class="text-center border border-light p-5" action="#!" novalidate>
     <p class="h4 mb-4"><img src="https://dellyman.com/img/how-it-works/log.png" width="10%"></p>
     <ul class="erros" {% if erros | length > 0 %} style="display: block;" {% endif %}</ul>
         {% for erro in erros %}

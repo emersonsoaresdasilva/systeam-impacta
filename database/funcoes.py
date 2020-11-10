@@ -50,7 +50,3 @@ def listar_partidas_da_equipe(Equipe):
 ''' BANCO DADOS USUARIOS '''
 def pegar_usuario(email, senha):
     return [u for u in USUARIOS if u.email == u.email][0]
-
-
-def criar_equipe(Equipe):
-    EQUIPES.append(Equipe)
