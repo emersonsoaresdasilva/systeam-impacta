@@ -9,24 +9,19 @@ def pegar_equipe(sigla='*'):
             if e.sigla == sigla: return e 
     return False
 
-def contar_pontos_da_equipe(Equipe):
-    pontos = 0
+def obter_dados_da_equipe(Equipe):
     partidas = listar_partidas_da_equipe(Equipe)
+    dados = {'pontos': 0, 'jogos' : 0, 'vitorias' : 0, 'derrotas' : 0, 'empates' : 0 }
+    dados['jogos'] = len(partidas)
     for p in partidas:
         if p.pontos_casa == p.pontos_visita:
-            pontos += 1
-        elif p.equipe_casa.sigla == Equipe.sigla:
-            if p.pontos_casa > p.pontos_visita:
-                pontos += 3
-        elif p.equipe_visita.sigla == Equipe.sigla:
-            if p.pontos_casa < p.pontos_visita:
-                pontos += 3
-    return pontos
+            dados['empates'] += 1
+        elif p.equipe_casa.sigla == Equipe.sigla and p.pontos_casa > p.pontos_visita or p.equipe_visita.sigla == Equipe.sigla and p.pontos_casa < p.pontos_visita:
+            dados['vitorias'] += 1
+    dados['derrotas'] = dados['jogos'] - (dados['vitorias'] + dados['empates'])
+    dados['pontos'] +=  dados['vitorias'] * 3 + dados['empates']
+    return dados
 
-def contar_jogos_da_equipe(Equipe):
-    pontos = 0
-    partidas = listar_partidas_da_equipe(Equipe)
-    return len(partidas)
 
 
 

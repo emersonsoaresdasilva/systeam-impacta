@@ -24,12 +24,12 @@
                 {% endif %}
             </td>
             <td class="Pontos">
-                {{ pontuacao[e.sigla] }}
+                {{ dados[e.sigla]['pontos'] }}
             </td>
-            <td class="Jogos">{{ jogos[e.sigla] }}</td>
-            <td class="Vitórias">10</td>
-            <td class="Empates">10</td>
-            <td class="Derrotas">0</td>
+            <td class="Jogos">{{ dados[e.sigla]['pontos'] }}</td>
+            <td class="Vitórias">{{ dados[e.sigla]['vitorias'] }}</td>
+            <td class="Empates">{{ dados[e.sigla]['empates'] }}</td>
+            <td class="Derrotas">{{ dados[e.sigla]['derrotas'] }}</td>
         </tr>
         {% endfor %}
     </tbody>

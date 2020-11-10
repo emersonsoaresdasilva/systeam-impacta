@@ -11,17 +11,14 @@ website_bp = Blueprint(
 @website_bp.route('/')
 def home():
     equipes = pegar_equipe()
-    pontuacao = {}
-    jogos = {}
+    dados = {}
     for e in equipes:
-        pontuacao[e.sigla] = contar_pontos_da_equipe(e)
-        jogos[e.sigla] = contar_jogos_da_equipe(e)
-
+        dados[e.sigla] = obter_dados_da_equipe(e)
+        
     return render_template( 
         'home.html',
         equipes=equipes,
-        pontuacao=pontuacao,
-        jogos=jogos
+        dados=dados
         )
 
 @website_bp.route('/detalhes/<sigla>')
