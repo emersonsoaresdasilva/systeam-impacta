@@ -39,6 +39,24 @@ class Equipe(object):
     def listar(cls):
         return cls.__dados
 
+    def calcular_pontos(self, partidas):
+        pontos = 0
+        for p in partidas:
+            if p.pontos_casa == p.pontos_visita:
+                pontos += 1
+            elif p.equipe_casa.sigla == self.sigla:
+                if p.pontos_casa > p.pontos_visita:
+                    pontos += 3
+            elif p.equipe_visita.sigla == self.sigla:
+                if p.pontos_casa < p.pontos_visita:
+                    pontos += 3
+        return pontos
+    
+    @classmethod
+    def classificar(cls, pontuacoes):
+        pass
+
+
 
 
 class Partida(object):
@@ -66,6 +84,6 @@ class Partida(object):
     def listar_da_equipe(cls, Equipe):
         partidas = []
         for p in cls.__dados:
-            if p.equipe_casa == Equipe or p.equipe_visita == Equipe:
+            if p.equipe_casa.sigla == Equipe.sigla or p.equipe_visita.sigla == Equipe.sigla:
                 partidas.append(p)
         return partidas

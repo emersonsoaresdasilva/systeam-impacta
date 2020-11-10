@@ -11,10 +11,16 @@ website_bp = Blueprint(
 @website_bp.route('/')
 def home():
     carregar(Equipe)
+    carregar(Partida)
     equipes = Equipe.listar()
+    pontuacao = {}
+    for e in equipes:
+        pontuacao[e.sigla] = e.calcular_pontos(Partida.listar_da_equipe(e))
+
     return render_template( 
         'home.html',
-        equipes=equipes
+        equipes=equipes,
+        pontuacao=pontuacao
         )
 
 @website_bp.route('/detalhes/<sigla>')

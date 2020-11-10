@@ -23,7 +23,9 @@
                 <a href="/detalhes/{{ e.sigla }}">{{ e.nome }}</a>
                 {% endif %}
             </td>
-            <td class="Pontos">25</td>
+            <td class="Pontos">
+                {{ pontuacao[e.sigla] }}
+            </td>
             <td class="Jogos">10</td>
             <td class="Vitórias">10</td>
             <td class="Empates">10</td>
