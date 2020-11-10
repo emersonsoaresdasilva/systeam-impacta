@@ -14,7 +14,6 @@ def home():
     dados = {}
     for e in equipes:
         dados[e.sigla] = obter_dados_da_equipe(e)
-        
     return render_template( 
         'home.html',
         equipes=equipes,

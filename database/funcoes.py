@@ -1,6 +1,14 @@
 from database.dados import *
 
+
+''' BANCO DE DADOS GERAL '''
+def classificar_equipes(dados):
+    pass
+
 ''' BANCO DADOS EQUIPE '''
+def criar_equipe(Equipe):
+    EQUIPES.append(Equipe)
+
 def pegar_equipe(sigla='*'):
     if sigla == '*':
         return EQUIPES
@@ -23,8 +31,6 @@ def obter_dados_da_equipe(Equipe):
     return dados
 
 
-
-
 ''' BANCO DADOS PARTIDAS '''
 def pegar_partida(id='*'):
     if id == '*':
@@ -40,7 +46,6 @@ def listar_partidas_da_equipe(Equipe):
         if p.equipe_casa.sigla == Equipe.sigla or p.equipe_visita.sigla == Equipe.sigla:
             partidas.append(p)
     return partidas
-
 
 ''' BANCO DADOS USUARIOS '''
 def pegar_usuario(email, senha):
