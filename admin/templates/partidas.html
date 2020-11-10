@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block main %}
+<table class="table table-bordered">
+    <tbody>
+        <thead>
+            <th colspan="6">Equipes</th>
+        </thead>
+        <tr>
+            <td class="">Time Casa</td>
+            <td class="">Casa Placar</td>
+            <td class="">Vistante Placar</td>
+            <td class="">Visitante</td>
+            <td class="" colspan="2"><a href="/admin/partidas/criar"><button type="button"
+                        class="btn btn-primary">Adicionar</button></a></td>
+        </tr>
+        {% for p in partidas %}
+        <tr>
+            <td class="">{{ p.equipe_casa.nome }}</td>
+            <td class="">{{ p.pontos_casa}}</td>
+            <td class="">{{ p.equipe_visita.nome}}</td>
+            <td class="">{{ p.pontos_visita}}</td>
+            <td class="">
+                <a href="/admin/partidas/alterar/{{ p.equipe_casa.sigla + 'vs' + p.equipe_visita.sigla }}"><button type="button" class="btn btn-success">Alterar</button></a>
+            </td>
+            <td class="">
+                <a href="/admin/partidas/deletar/{{ p.equipe_casa.sigla + 'vs' + p.equipe_visita.sigla }}"><button type="button" class="btn btn-danger">Deletar</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

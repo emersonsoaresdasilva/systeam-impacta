@@ -15,7 +15,7 @@ def home():
     equipes = Equipe.listar()
     pontuacao = {}
     for e in equipes:
-        pontuacao[e.sigla] = e.calcular_pontos(Partida.listar_da_equipe(e))
+        pontuacao[e.sigla] = calcular_pontos(e)
 
     return render_template( 
         'home.html',
