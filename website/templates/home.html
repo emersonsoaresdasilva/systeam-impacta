@@ -1,31 +1,28 @@
 {% extends 'base.html' %}
 {% block main %}
 <table class="table table-sm">
-    <thead>
-        <th colspan="6">Tabela de Classificação | Série A | Brasileirão 2020</th>
+    <thead >
+        <th colspan="6" class="font-weight-normal">Tabela de Classificação | Série A | Brasileirão 2020</th>
     </thead>
     <tbody>
         <tr>
-            <td class="C">Clube</td>
-            <td class="P">Pontos</td>
-            <td class="J">Jogos</td>
-            <td class="V">Vitórias</td>
-            <td class="E">Empates</td>
-            <td class="D">Derrotas</td>
+            <td class="font-weight-bold">Clube</td>
+            <td class="font-weight-bold">Pontos</td>
+            <td class="font-weight-bold">Jogos</td>
+            <td class="font-weight-bold">Vitórias</td>
+            <td class="font-weight-bold">Empates</td>
+            <td class="font-weight-bold">Derrotas</td>
         </tr>
         {% for e in equipes %}
         <tr>
             <td class="Clube">
-                <!-- Quero a logo do time. -->
                 {% if admin %}
                 <a href="/admin/equipes/{{ e.sigla }}">{{ e.nome }}</a>
                 {% else %}
                 <a href="/detalhes/{{ e.sigla }}">{{ e.nome }}</a>
                 {% endif %}
             </td>
-            <td class="Pontos">
-                {{ dados[e.sigla]['pontos'] }}
-            </td>
+            <td class="Pontos">{{ dados[e.sigla]['pontos'] }}</td>
             <td class="Jogos">{{ dados[e.sigla]['jogos'] }}</td>
             <td class="Vitórias">{{ dados[e.sigla]['vitorias'] }}</td>
             <td class="Empates">{{ dados[e.sigla]['empates'] }}</td>

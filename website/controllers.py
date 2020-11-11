@@ -22,21 +22,26 @@ def home():
 
 @website_bp.route('/detalhes/<sigla>')
 def detalhes(sigla):
-    equipe = pegar_equipe(sigla)
-    if equipe:
-        return "PÁGINA DE DETALHES " + equipe.sigla
-    return "Equipe não encontrada"
+    return render_template('detalhes.html')
+
+    # equipe = pegar_equipe(sigla)
+    # if equipe:
+    #     return "PÁGINA DE DETALHES " + equipe.sigla
+    # return "Equipe não encontrada"
 
 @website_bp.route('/entrar', methods=['GET', 'POST'])
 def entrar():
+    erros = []
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
         user = pegar_usuario(email, senha)
         if user and user.senha == senha:
             return redirect('admin')
+        erros.append('E-mail ou senha incorretos.')
         return redirect('entrar')#DEVE-SE INFORMAR AO USUARIO QUE ELE ERROU O USER OU SENHA
     #IF GET:
     return render_template(
-        'entrar.html'
+        'entrar.html',
+        erros=erros
     )

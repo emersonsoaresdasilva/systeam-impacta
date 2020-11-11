@@ -33,7 +33,7 @@ def equipes():
 
 @admin_bp.route('/equipes/<sigla>')
 def equipe(sigla):
-    return "página de exibição da equipe" + sigla 
+    return render_template('detalhes.html')
 
 @admin_bp.route('/equipes/criar', methods=['GET', 'POST'])
 def equipe_criar():
@@ -109,17 +109,17 @@ def partidas_criar():
         admin=True
     )
 
-# @admin_bp.route('/equipes/alterar/<sigla>')
-# def partidas_alterar(sigla):
-#     partida = pegar_partida(sigla)
-#     funcao = 'Alterar'
+@admin_bp.route('/partidas/alterar/<sigla>')
+def partida_alterar(sigla):
+    partida = pegar_partida(sigla)
+    funcao = 'Alterar'
 
-#     return render_template(
-#         'partidas_form.html',
-#         partida=partida,
-#         funcao=funcao,
-#         admin=True
-#     )
+    return render_template(
+        'partidas_form.html',
+        partida=partida,
+        funcao=funcao,
+        admin=True
+    )
 
 @admin_bp.route('/sair')
 def sair():

@@ -6,19 +6,21 @@
     </thead>
     <tbody>
         <tr>
-            <td class="">Clube</td>
-            <td class="">Sigla</td>
-            <td class="" colspan="2"><a href="/admin/equipes/criar"><button type="button"
-                        class="btn btn-primary">Adicionar</button></a></td>
+            <td class="font-weight-bold">Clube</td>
+            <td class="font-weight-bold">Sigla</td>
+            <td class="font-weight-bold">Local</td>
+            <td class="font-weight-bold" colspan="2"><a href="/admin/equipes/criar">
+            <button type="button" class="btn btn-primary">Adicionar</button></a></td>
         </tr>
         {% for e in equipes %}
         <tr>
-            <td class="">{{ e.nome }}</td>
-            <td class="">{{ e.sigla }}</td>
-            <td class="">
+            <td class="font-weight-normal">{{ e.nome }}</td>
+            <td class="font-weight-normal">{{ e.sigla }}</td>
+            <td class="font-weight-normal">{{ e.local }}</td>
+            <td class="font-weight-normal">
                 <a href="/admin/equipes/alterar/{{ e.sigla }}"><button type="button" class="btn btn-success">Alterar</button></a>
             </td>
-            <td class="">
+            <td class="font-weight-normal">
                 <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button" class="btn btn-danger">Deletar</button></a>
             </td>
         </tr>

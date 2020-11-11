@@ -6,20 +6,19 @@
             <th colspan="6">Partidas</th>
         </thead>
         <tr>
-            <td class="">Time Casa</td>
-            <td class="">Casa Placar</td>
-            <td class="">Vistante Placar</td>
-            <td class="">Visitante</td>
-            <td class="" colspan="2"><a href="/admin/partidas/criar"><button type="button"
-                        class="btn btn-primary">Adicionar</button></a></td>
+            <td class="font-weight-bold">Time Casa</td>
+            <td class="font-weight-bold" colspan="2">Gols</td>
+            <td class="font-weight-bold">Visitante</td>
+            <td class="font-weight-bold" colspan="2"><a href="/admin/partidas/criar">
+            <button type="button" class="btn btn-primary">Adicionar</button></a></td>
         </tr>
         {% for p in partidas %}
         <tr>
-            <td class="">{{ p.equipe_casa.nome }}</td>
-            <td class="">{{ p.pontos_casa}}</td>
-            <td class="">{{ p.pontos_visita}}</td>
-            <td class="">{{ p.equipe_visita.nome}}</td>
-            <td class="">
+            <td>{{ p.equipe_casa.nome }}</td>
+            <td>{{ p.pontos_casa}}</td>
+            <td>{{ p.pontos_visita}}</td>
+            <td>{{ p.equipe_visita.nome}}</td>
+            <td>
                 <a href="/admin/partidas/alterar/{{ p.equipe_casa.sigla + 'vs' + p.equipe_visita.sigla }}"><button type="button" class="btn btn-success">Alterar</button></a>
             </td>
             <td class="">
