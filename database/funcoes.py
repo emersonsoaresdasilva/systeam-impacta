@@ -27,7 +27,7 @@ def pegar_equipe(sigla='*'):
     return False
 
 def obter_dados_da_equipe(equipe):
-    partidas = listar_partidas_da_equipe(equipe)
+    partidas = listar_partidas_da_equipe(equipe.sigla)
     dados = {'pontos': 0, 'jogos' : 0, 'vitorias' : 0, 'derrotas' : 0, 'empates' : 0 }
     dados['jogos'] = len(partidas)
     for p in partidas:
