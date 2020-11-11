@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block main %}
+<form method="POST" class="text-center border border-light p-5" novalidate>
+    <img src="https://image.freepik.com/vetores-gratis/desenhos-animados-de-groupt-de-equipe-de-jogadores-de-futebol_9026-22.jpg" width="15%">
+    <div class="col-md-2 offset-md-5">
+    <div class="form-group">
+        <input type="text" class="form-control" style="text-align: center;" id="validationServer013" name='nome' value='{{ equipe.nome }}' placeholder="Nome" required>
+        <small class="form-text text-muted">Insira o nome completo da equipe.</small>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" style="text-align: center;" id="validationServer023" name='sigla' value='{{ equipe.sigla }}' placeholder="Sigla" required>
+        <small class="form-text text-muted">Insira a sigla da equipe.</small>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" style="text-align: center;" id="validationServer023" name='local' value='{{ equipe.local }}'placeholder="Local" required>
+        <small class="form-text text-muted">Insira o local de origem da equipe.</small>
+    </div>
+        <button type="submit" class="btn btn-success btn-block my-4">{{ funcao }}</button>
+</form>
+{% endblock %}
