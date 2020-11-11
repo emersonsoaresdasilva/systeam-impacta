@@ -1,16 +1,22 @@
 from database.dados import *
 
-
 ''' BANCO DE DADOS GERAL '''
 def classificar_equipes(dados):
     pass
 
 ''' BANCO DADOS EQUIPE '''
 def criar_equipe(equipe):
-    if pegar_equipe(equipe.sigla) != False:
+    if pegar_equipe(equipe.sigla) == False:
         EQUIPES.append(equipe)
         return True
     return False
+
+def deletar_equipe(sigla):
+    for e in EQUIPES:
+        indice = 0
+        if e.sigla == sigla:
+            del(EQUIPES[indice])
+        indice += 1
 
 def pegar_equipe(sigla='*'):
     if sigla == '*':
@@ -33,13 +39,19 @@ def obter_dados_da_equipe(equipe):
     dados['pontos'] +=  dados['vitorias'] * 3 + dados['empates']
     return dados
 
-
 ''' BANCO DADOS PARTIDAS '''
 def criar_partida(partida):
-    if pegar_partida(partida.equipe_casa.sigla + 'vs' + equipe_visita.sigla) != False:
-        partida.append(partida)
+    if pegar_partida(partida.equipe_casa.sigla + 'vs' + partida.equipe_visita.sigla) == False:
+        PARTIDAS.append(partida)
         return True
     return False
+
+def deletar_equipe(sigla):
+    for e in EQUIPES:
+        indice = 0
+        if e.sigla == sigla:
+            del(EQUIPES[indice])
+        indice += 1
 
 def pegar_partida(id='*'):
     if id == '*':
