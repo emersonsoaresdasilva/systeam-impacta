@@ -1,21 +1,41 @@
 {% extends 'base.html' %}
 {% block main %}
-<table class="table table-bordered">
-    <thead>
-        <th colspan="6">Detalhes</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="font-weight-bold">Equipe</td>
-            <td class="font-weight-bold">Placar Final</td>
-            <td class="font-weight-bold">Equipe</td>
-        </tr>
-        <tr>
-            <!-- Modelo -->
-            <td class="font-weight-bold">São Paulo</td>
-            <td class="font-weight-bold">5 x 0</td>
-            <td class="font-weight-bold">Santos</td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <h2>{{equipe.nome}} </h2>
+    <h4>Sigla: {{ equipe.sigla }} | Local:{{equipe.local}}</h4>
+</div>
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="6">
+                    Partidas da Equipe
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="font-weight-bold">Casa</td>
+                <td class="font-weight-bold">Placar Final</td>
+                <td class="font-weight-bold">Visitante</td>
+            </tr>
+            {% for p in partidas %}
+            <tr 
+                    {% if not p.vencedor()%}
+                        class="empate"
+                    {% elif p.vencedor().sigla ==  equipe.sigla %}
+                        class="vitoria"
+                    {% else %}
+                        class="derrota"
+                    {% endif %}
+            >
+                <!-- Modelo -->
+                <td class="font-weight-bold">{{ p.equipe_casa.nome}}</td>
+                <td class="font-weight-bold">{{ p.pontos_casa }} x {{ p.pontos_visita}}</td>
+                <td class="font-weight-bold">{{ p.equipe_visita.nome }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

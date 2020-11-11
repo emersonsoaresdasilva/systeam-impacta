@@ -58,13 +58,13 @@ def pegar_partida(id='*'):
         return PARTIDAS
     else:
         for p in PARTIDAS:
-            if p.equipe_casa.sigla + p.equipe_casa.sigla == id or p.equipe_casa.sigla + p.equipe_casa.sigla == id: return p
+            if p.equipe_casa.sigla + p.equipe_visita.sigla == id: return p
     return False
 
-def listar_partidas_da_equipe(equipe):
+def listar_partidas_da_equipe(sigla):
     partidas = []
     for p in PARTIDAS:
-        if p.equipe_casa.sigla == equipe.sigla or p.equipe_visita.sigla == equipe.sigla:
+        if p.equipe_casa.sigla == sigla or p.equipe_visita.sigla == sigla:
             partidas.append(p)
     return partidas
 

@@ -60,3 +60,10 @@ class Partida(object):
     @classmethod
     def listar(cls):
         return cls.__dados
+    
+    def vencedor(self):
+        if self.pontos_casa > self.pontos_visita:
+            return self.equipe_casa
+        elif self.pontos_visita > self.pontos_casa:
+            return self.equipe_visita
+        return False

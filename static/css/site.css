@@ -6,12 +6,12 @@ body footer{
     padding: 10px;
     color: black;
 }
-table, td, th {
+table, td, th, div{
     text-align: center;
 }
 a:link {text-decoration:none;}
 
-body > main > table > thead > tr > th{
+th{
     font-size: 25px;
     text-align: center;
 }
@@ -20,3 +20,14 @@ body > main > table > thead > tr > th{
     box-shadow: 0 3px 10px -6px #000;
 }
 
+.vitoria{
+    background-color: #86df92;
+}
+
+.empate{
+    background-color: #949494b8;
+}
+
+.derrota{
+    background-color: #e39797;
+}

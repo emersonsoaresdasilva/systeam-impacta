@@ -17,7 +17,7 @@
         <tr>
             <td class="Clube">
                 {% if admin %}
-                <a href="/admin/equipes/{{ e.sigla }}">{{ e.nome }}</a>
+                <a href="/admin/equipes/alterar/{{ e.sigla }}">{{ e.nome }}</a>
                 {% else %}
                 <a href="/detalhes/{{ e.sigla }}">{{ e.nome }}</a>
                 {% endif %}

@@ -22,7 +22,13 @@ def home():
 
 @website_bp.route('/detalhes/<sigla>')
 def detalhes(sigla):
-    return render_template('detalhes.html')
+    equipe = pegar_equipe(sigla)
+    partidas = listar_partidas_da_equipe(sigla)
+    return render_template(
+        'detalhes.html',
+        equipe = equipe,
+        partidas = partidas
+    )
 
     # equipe = pegar_equipe(sigla)
     # if equipe:
