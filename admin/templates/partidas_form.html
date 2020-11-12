@@ -6,9 +6,13 @@
     não está trazendo as partidas
     das equipes no input e demais detalhes...
 -->
-
 <form method="POST" class="text-center border border-light p-5" novalidate>
     <img src="https://icons.iconarchive.com/icons/iconshock/soccer/256/soceer-1-icon.png" width="13%">
+    {% for erro in erros %}
+        <div class="alert alert-danger" role="alert">
+            {{ erro }}
+        </div>
+    {% endfor %}
     <p></p>
     <div class="col-md-2 offset-md-5">
         <div class="form-group">
@@ -28,13 +32,14 @@
             <small class="form-text text-muted">Insira o time visitante.</small>
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" style="text-align: center;" name='pontoscasa' value='{{ partida.pontos_casa }}' placeholder="0" required>
+            <input required type="number"  min="0" class="form-control" style="text-align: center;" name='pontoscasa' value='{{ partida.pontos_casa }}' placeholder="0" required>
             <small class="form-text text-muted">Insira os gols do time casa.</small>
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" style="text-align: center;" name='pontosvisitante'  value='{{ partida.pontos_visita }}' placeholder="0" required>
+            <input required type="number" min="0" class="form-control" style="text-align: center;" name='pontosvisitante'  value='{{ partida.pontos_visita }}' placeholder="0" required>
             <small class="form-text text-muted">Insira os gols do time visitante.</small>
         </div>
+        <input type="hidden" name ="id_partida_antiga" value="{{id_partida_antiga}}">
         <button type="submit" class="btn btn-success btn-block my-4">{{ funcao }}</button>
         <button type="reset" class="btn btn-warning btn-block my-4">Limpar</button>
     </div>

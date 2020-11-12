@@ -41,24 +41,32 @@ def obter_dados_da_equipe(equipe):
 
 ''' BANCO DADOS PARTIDAS '''
 def criar_partida(partida):
-    if pegar_partida(partida.equipe_casa.sigla + 'vs' + partida.equipe_visita.sigla) == False:
+    if pegar_partida(partida.equipe_casa.sigla + partida.equipe_visita.sigla) == False:
         PARTIDAS.append(partida)
         return True
     return False
 
-def deletar_equipe(sigla):
-    indice = 0
-    for e in EQUIPES:
-        if e.sigla == sigla:
-            del(EQUIPES[indice])
-        indice += 1
+def deletar_partida(id):
+    i = pegar_indice_partida(id)
+    if i != False or i == 0:
+        del(PARTIDAS[i])
+        return True
+    return False
 
 def pegar_partida(id='*'):
     if id == '*':
         return PARTIDAS
     else:
         for p in PARTIDAS:
-            if p.equipe_casa.sigla + p.equipe_visita.sigla == id: return p
+            if p.id() == id: return p
+    return False
+
+def alterar_partida(id_anterior, partida):
+    if pegar_partida(partida.equipe_casa.sigla + partida.equipe_visita.sigla) == False or id_anterior == partida.id():
+        i = pegar_indice_partida(id_anterior)
+        if i != False or i == 0:
+            PARTIDAS[i] = partida
+            return True
     return False
 
 def listar_partidas_da_equipe(sigla):
@@ -73,3 +81,20 @@ def pegar_usuario(email, senha):
     user = [u for u in USUARIOS if u.email == email and u.senha == senha]
     if user: return user[0] 
     return []
+
+#Auxiliar
+def pegar_indice_partida(id):
+    indice = 0
+    for p in PARTIDAS:
+        if p.id() == id:
+            return indice
+        indice += 1
+    return False
+
+def pegar_indice_equipe(sigla):
+    indice = 0
+    for e in EQUIPES:
+        if e.sigla == sigla:
+            return indice
+        indice += 1
+    return False

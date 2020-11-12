@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
-{% block main %}
+{% block main %} 
 <table class="table table-bordered">
     <tbody>
         <thead>
             <th colspan="6">Partidas</th>
         </thead>
+        {% for msg in mensagens %}
+            <script>alert("{{ msg }}")</script>
+        {% endfor %}
         <tr>
             <td class="font-weight-bold">Time Casa</td>
             <td class="font-weight-bold" colspan="2">Gols</td>
@@ -31,7 +34,6 @@
         <!-- Modal de confirmação de exclusão de equipe -->
         <div class="modal fade" id="modalConfirmaExclusao{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}" tabindex="-1" role="dialog"
             aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
-            <b>{{ p.equipe_casa.nome }} X {{ p.equipe_visita.nome }}</b>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

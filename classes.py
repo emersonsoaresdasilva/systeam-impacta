@@ -67,3 +67,6 @@ class Partida(object):
         elif self.pontos_visita > self.pontos_casa:
             return self.equipe_visita
         return False
+
+    def id(self):
+        return (self.equipe_casa.sigla+self.equipe_visita.sigla)
