@@ -26,19 +26,24 @@ def home():
         '/equipes'
     )
 
-@admin_bp.route('/equipes')
+@admin_bp.route('/equipes', methods=['GET','POST'])
 def equipes():
+    mensagens=[]
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
+    if request.args.get('acao'):
+        mensagens.append(request.args.get('acao') + " com sucesso")
     equipes = pegar_equipe()
     return render_template( 
         'equipes.html',
         equipes=equipes,
+        mensagens=mensagens,
         admin=True
     )
 
 @admin_bp.route('/equipes/criar', methods=['GET', 'POST'])
 def equipe_criar():
+    erros = []
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
     funcao = 'Criar'
@@ -46,29 +51,41 @@ def equipe_criar():
         nome = request.form['nome']
         sigla = request.form['sigla']
         local = request.form['local']
-
         e = Equipe(nome, sigla, local)
         if criar_equipe(e):
-            return redirect('/admin')
-
+            return redirect('/admin/equipes?acao=Criada')
+        erros.append('Equipe já existe')
     return render_template(
         'equipes_form.html',
         equipe='',
         funcao=funcao,
+        erros=erros,
         admin=True
     )
 
-@admin_bp.route('/equipes/alterar/<sigla>')
+@admin_bp.route('/equipes/alterar/<sigla>', methods=['GET','POST'])
 def equipe_alterar(sigla):
+    erros=[]
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
-    equipe = pegar_equipe(sigla)
     funcao = 'Alterar'
-
+    if request.method == 'POST':
+        nome = request.form['nome']
+        sigla = request.form['sigla']
+        local = request.form['local']
+        sigla_antiga = request.form['sigla_antiga']
+        e = Equipe(nome, sigla, local)
+        if alterar_equipe(sigla_antiga,e):
+            return redirect('/admin/equipes?acao=Alterada')
+        erros.append('Equipe já existe!')
+    
+    equipe = pegar_equipe(sigla)
     return render_template(
         'equipes_form.html',
         equipe=equipe,
         funcao=funcao,
+        erros=erros,
+        sigla_antiga=sigla,
         admin=True
     )
 
@@ -78,7 +95,7 @@ def deletar_equipes(sigla):
         return redirect(url_for('website.home'))
     deletar_equipe(sigla)
     return redirect(
-        '/admin/equipes'
+        '/admin/equipes?acao=Deletada'
     )
 
 @admin_bp.route('/partidas', methods=['GET'])

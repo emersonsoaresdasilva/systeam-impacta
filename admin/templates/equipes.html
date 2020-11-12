@@ -4,6 +4,9 @@
     <thead>
         <th colspan="6">Equipes</th>
     </thead>
+    {% for msg in mensagens %}
+    <script>alert("{{ msg }}")</script>
+    {% endfor %}
     <tbody>
         <tr>
             <td class="font-weight-bold">Clube</td>

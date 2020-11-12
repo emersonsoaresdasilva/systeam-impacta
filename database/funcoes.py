@@ -12,11 +12,19 @@ def criar_equipe(equipe):
     return False
 
 def deletar_equipe(sigla):
-    for e in EQUIPES:
-        indice = 0
-        if e.sigla == sigla:
-            del(EQUIPES[indice])
-        indice += 1
+    i = pegar_indice_equipe(sigla)
+    if i != False or i == 0:
+        del(EQUIPES[i])
+        return True
+    return False
+
+def alterar_equipe(sigla_anterior, equipe):
+    if pegar_equipe(equipe.sigla) == False or sigla_anterior == equipe.sigla:
+        i = pegar_indice_partida(sigla_anterior)
+        if i != False or i == 0:
+            EQUIPES[i] = equipe
+            return True
+    return False
 
 def pegar_equipe(sigla='*'):
     if sigla == '*':
@@ -62,7 +70,7 @@ def pegar_partida(id='*'):
     return False
 
 def alterar_partida(id_anterior, partida):
-    if pegar_partida(partida.equipe_casa.sigla + partida.equipe_visita.sigla) == False or id_anterior == partida.id():
+    if pegar_partida(partida.id()) == False or id_anterior == partida.id():
         i = pegar_indice_partida(id_anterior)
         if i != False or i == 0:
             PARTIDAS[i] = partida
