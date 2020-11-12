@@ -145,7 +145,7 @@ def partida_alterar(sigla):
         else:
             partida = Partida(pegar_equipe(time_casa), pegar_equipe(time_visitante), pontos_casa, pontos_visita)
             if alterar_partida(id_partida_antiga, partida):
-                return redirect('/admin/partidas?acao=alterada')
+                return redirect('/admin/partidas?acao=Alterada')
             erros.append("Partida já existente (Casa x Visitante)")
     #GET
     partida = pegar_partida(sigla)
