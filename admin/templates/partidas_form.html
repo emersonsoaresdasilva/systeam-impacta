@@ -1,13 +1,7 @@
 {% extends 'base.html' %}
 {% block main %}
-
-<!--    
-    Verificar o formulário,
-    não está trazendo as partidas
-    das equipes no input e demais detalhes...
--->
 <form method="POST" id="formPartida" class="text-center border border-light p-5">
-    <img src="https://icons.iconarchive.com/icons/iconshock/soccer/256/soceer-1-icon.png" width="13%">
+    <img src="/static/images/icon-partidas.png" width="15%">
     {% for erro in erros %}
         <div class="alert alert-danger" role="alert">
             {{ erro }}
