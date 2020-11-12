@@ -4,7 +4,9 @@
     <p class="h4 mb-4"><img src="https://dellyman.com/img/how-it-works/log.png" width="10%"></p>
     <ul class="erros" {% if erros | length > 0 %} style="display: block;" {% endif %}</ul>
         {% for erro in erros %}
-        <li>{{ erro }}</li>
+        <div class="alert alert-danger" role="alert">
+            {{ erro }}
+        </div>
         {% endfor %}
     </ul>
     <div class="form-group">

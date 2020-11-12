@@ -10,21 +10,46 @@
             <td class="font-weight-bold" colspan="2">Gols</td>
             <td class="font-weight-bold">Visitante</td>
             <td class="font-weight-bold" colspan="2"><a href="/admin/partidas/criar">
-            <button type="button" class="btn btn-primary">Adicionar</button></a></td>
+                    <button type="button" class="btn btn-primary">Adicionar</button></a></td>
         </tr>
         {% for p in partidas %}
         <tr>
             <td>({{p.equipe_casa.sigla}}) {{ p.equipe_casa.nome }} <br> {{ p.equipe_casa.local}}</td>
             <td>{{ p.pontos_casa}}</td>
             <td>{{ p.pontos_visita}}</td>
-            <td>({{p.equipe_visita.sigla}})     {{ p.equipe_visita.nome }} <br> {{ p.equipe_visita.local}}</td>
+            <td>({{p.equipe_visita.sigla}}) {{ p.equipe_visita.nome }} <br> {{ p.equipe_visita.local}}</td>
             <td>
-                <a href="/admin/partidas/alterar/{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}"><button type="button" class="btn btn-success">Alterar</button></a>
+                <a href="/admin/partidas/alterar/{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}"><button
+                        type="button" class="btn btn-success">Alterar</button></a>
             </td>
             <td class="">
-                <a href="/admin/partidas/deletar/{{ p.sigla }}"><button type="button" class="btn btn-danger">Deletar</button></a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmaExclusao{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}">
+                    Deletar
+                </button>
             </td>
         </tr>
+        <!-- Modal de confirmação de exclusão de equipe -->
+        <div class="modal fade" id="modalConfirmaExclusao{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}" tabindex="-1" role="dialog"
+            aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
+            <b>{{ p.equipe_casa.nome }} X {{ p.equipe_visita.nome }}</b>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmação</h5>
+                    </div>
+                    <div class="modal-body">
+                        <b>{{ p.equipe_casa.nome }} X {{ p.equipe_visita.nome }}</b><br>
+                        Deseja realmente deletar a partida?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <a href="/admin/partidas/deletar/{{ p.equipe_casa.sigla+p.equipe_visita.sigla }}"><button type="button"
+                                class="btn btn-danger">Deletar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim modal-->
         {% endfor %}
     </tbody>
 </table>

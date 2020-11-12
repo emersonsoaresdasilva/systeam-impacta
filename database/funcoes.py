@@ -47,8 +47,8 @@ def criar_partida(partida):
     return False
 
 def deletar_equipe(sigla):
+    indice = 0
     for e in EQUIPES:
-        indice = 0
         if e.sigla == sigla:
             del(EQUIPES[indice])
         indice += 1
@@ -70,4 +70,6 @@ def listar_partidas_da_equipe(sigla):
 
 ''' BANCO DADOS USUARIOS '''
 def pegar_usuario(email, senha):
-    return [u for u in USUARIOS if u.email == u.email][0]
+    user = [u for u in USUARIOS if u.email == email and u.senha == senha]
+    if user: return user[0] 
+    return []

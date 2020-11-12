@@ -10,7 +10,7 @@
             <td class="font-weight-bold">Sigla</td>
             <td class="font-weight-bold">Local</td>
             <td class="font-weight-bold" colspan="2"><a href="/admin/equipes/criar">
-            <button type="button" class="btn btn-primary">Adicionar</button></a></td>
+                    <button type="button" class="btn btn-primary">Adicionar</button></a></td>
         </tr>
         {% for e in equipes %}
         <tr>
@@ -18,12 +18,34 @@
             <td class="font-weight-normal">{{ e.sigla }}</td>
             <td class="font-weight-normal">{{ e.local }}</td>
             <td class="font-weight-normal">
-                <a href="/admin/equipes/alterar/{{ e.sigla }}"><button type="button" class="btn btn-success">Alterar</button></a>
+                <a href="/admin/equipes/alterar/{{ e.sigla }}"><button type="button"
+                        class="btn btn-success">Alterar</button></a>
             </td>
             <td class="font-weight-normal">
-                <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button" class="btn btn-danger">Deletar</button></a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmaExclusao{{ e.sigla }}">
+                    Deletar
+                </button>
             </td>
         </tr>
+        <!-- Modal de confirmação de exclusão de equipe -->
+        <div class="modal fade" id="modalConfirmaExclusao{{ e.sigla }}" tabindex="-1" role="dialog"
+            aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente deletar a equipe {{ e.nome }}?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button" class="btn btn-danger">Deletar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim modal-->
         {% endfor %}
     </tbody>
 </table>

@@ -31,3 +31,20 @@ th{
 .derrota{
     background-color: #e39797;
 }
+
+#modalConfirmaExclusao .modal-header{
+    margin: auto;
+}
+
+#modalConfirmaExclusao .modal-body{
+    padding: 15px 0px 0px 0px;
+}
+
+#modalConfirmaExclusao .modal-footer{
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    margin: auto;
+    border: none
+}

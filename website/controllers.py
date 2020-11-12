@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, session, url_for
 from database.funcoes import *
 from classes import *
 
@@ -10,6 +10,8 @@ website_bp = Blueprint(
 
 @website_bp.route('/')
 def home():
+    if 'usermail' in session:
+        return redirect('admin')
     equipes = pegar_equipe()
     dados = {}
     for e in equipes:
@@ -22,6 +24,8 @@ def home():
 
 @website_bp.route('/detalhes/<sigla>')
 def detalhes(sigla):
+    if 'usermail' in session:
+        return redirect(url_for('admin.home'))
     equipe = pegar_equipe(sigla)
     partidas = listar_partidas_da_equipe(sigla)
     return render_template(
@@ -38,15 +42,17 @@ def detalhes(sigla):
 @website_bp.route('/entrar', methods=['GET', 'POST'])
 def entrar():
     erros = []
+    if 'usermail' in session:
+        return redirect(url_for('admin.home'))
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
         user = pegar_usuario(email, senha)
-        if user and user.senha == senha:
-            return redirect('admin')
-        erros.append('E-mail ou senha incorretos.')
-        return redirect('entrar')#DEVE-SE INFORMAR AO USUARIO QUE ELE ERROU O USER OU SENHA
-    #IF GET:
+        if user:
+            session['usermail'] = email
+            return redirect('entrar')
+        erros.append('E-mail ou senha incorretos.') 
+    #get
     return render_template(
         'entrar.html',
         erros=erros
