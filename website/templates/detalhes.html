@@ -1,23 +1,20 @@
 {% extends 'base.html' %}
 {% block main %}
 <div>
-    <h2>{{equipe.nome}} </h2>
-    <h4>Sigla: {{ equipe.sigla }} | Local:{{equipe.local}}</h4>
-</div>
-<div>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th colspan="6">
-                    Partidas da Equipe
+                <th colspan="6">                    
+                    Partidas da {{equipe.nome}} 🥅
+                <h4>Sigla: {{ equipe.sigla }} | Origem: {{equipe.local}}</h4>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="font-weight-bold">Casa</td>
-                <td class="font-weight-bold">Placar Final</td>
-                <td class="font-weight-bold">Visitante</td>
+                <td class="font-weight-bold">Casa 🏡</td>
+                <td class="font-weight-bold">Placar Final ⚽</td>
+                <td class="font-weight-bold">Visitante 🏟️</td>
             </tr>
             {% for p in partidas %}
             <tr 
@@ -29,7 +26,6 @@
                         class="derrota"
                     {% endif %}
             >
-                <!-- Modelo -->
                 <td class="font-weight-bold">{{ p.equipe_casa.nome}}</td>
                 <td class="font-weight-bold">{{ p.pontos_casa }} x {{ p.pontos_visita}}</td>
                 <td class="font-weight-bold">{{ p.equipe_visita.nome }}</td>
