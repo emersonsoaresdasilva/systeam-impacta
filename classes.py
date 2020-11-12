@@ -70,3 +70,9 @@ class Partida(object):
 
     def id(self):
         return (self.equipe_casa.sigla+self.equipe_visita.sigla)
+
+    def trocar_equipe(self,sigla_anterior,equipe):
+        if self.equipe_casa.sigla == sigla_anterior:
+            self.equipe_casa = equipe
+        elif self.equipe_visita.sigla == sigla_anterior:
+            self.equipe_visita = equipe

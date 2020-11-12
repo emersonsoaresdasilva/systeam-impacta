@@ -75,10 +75,11 @@ def equipe_alterar(sigla):
         local = request.form['local']
         sigla_antiga = request.form['sigla_antiga']
         e = Equipe(nome, sigla, local)
+        #if len(listar_partidas_da_equipe(sigla)) == 0:
         if alterar_equipe(sigla_antiga,e):
             return redirect('/admin/equipes?acao=Alterada')
         erros.append('Equipe já existe!')
-    
+        #erros.append("Não é possível alterar equipes que possuem vínculos com partidas!")       
     equipe = pegar_equipe(sigla)
     return render_template(
         'equipes_form.html',
@@ -91,9 +92,16 @@ def equipe_alterar(sigla):
 
 @admin_bp.route('/equipes/deletar/<sigla>', methods=['GET','POST'])
 def deletar_equipes(sigla):
+    erros=[]
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
-    deletar_equipe(sigla)
+    if len(listar_partidas_da_equipe(sigla)) == 0:
+        deletar_equipe(sigla)
+    else:
+        equipes = pegar_equipe()
+        erros.append("Não é possível deletar equipes que possuem vínculos com partidas!")
+        return render_template('equipes.html',equipes=equipes, erros=erros)   
+    
     return redirect(
         '/admin/equipes?acao=Deletada'
     )

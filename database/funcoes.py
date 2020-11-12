@@ -23,6 +23,11 @@ def alterar_equipe(sigla_anterior, equipe):
         i = pegar_indice_partida(sigla_anterior)
         if i != False or i == 0:
             EQUIPES[i] = equipe
+            partidas = listar_partidas_da_equipe(sigla_anterior)
+            for p in partidas:
+                id_anterior = p.id()
+                p.trocar_equipe(sigla_anterior,equipe)
+                alterar_partida(id_anterior, p)
             return True
     return False
 
