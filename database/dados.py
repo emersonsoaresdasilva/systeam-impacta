@@ -8,7 +8,6 @@ EQUIPES = [
     Equipe('Equipe 5', 'EQ5', 'Campinas-SP')
 ]
 
-
 PARTIDAS = [
     Partida(EQUIPES[0], EQUIPES[1], 1, 0),
     Partida(EQUIPES[1], EQUIPES[0], 2, 5),
@@ -30,6 +29,10 @@ PARTIDAS = [
     Partida(EQUIPES[4], EQUIPES[2], 0, 0),
     Partida(EQUIPES[3], EQUIPES[4], 0, 0),
     Partida(EQUIPES[4], EQUIPES[3], 0, 0)
+    # Partida(EQUIPES[0], EQUIPES[1], 0, 1),
+    # Partida(EQUIPES[2], EQUIPES[0], 0, 0),
+    # Partida(EQUIPES[0], EQUIPES[2], 0, 0),
+    # Partida(EQUIPES[2], EQUIPES[0], 0, 0),
 ]
 
 USUARIOS = [

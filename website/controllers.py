@@ -14,8 +14,12 @@ def home():
         return redirect('admin')
     equipes = pegar_equipe()
     dados = {}
+    
     for e in equipes:
         dados[e.sigla] = obter_dados_da_equipe(e)
+        dados[e.sigla]['objeto'] = pegar_equipe(e.sigla)
+
+    dados = Equipe.ordenar_por_pontos(dados)
     return render_template( 
         'home.html',
         equipes=equipes,

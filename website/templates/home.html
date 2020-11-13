@@ -13,15 +13,20 @@
             <td class="font-weight-bold">Empates</td>
             <td class="font-weight-bold">Derrotas</td>
         </tr>
-        {% for d in dados %}
+        {% for sigla in dados %}
         <tr>
             <td class="Clube">
                 {% if admin %}
-                <a href="/admin/equipes/alterar/{{ d }}">{{ d }}</a>
+                <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
                 {% else %}
-                <a href="/detalhes/{{ d }}">{{ d }}</a>
+                <a href="/detalhes/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
                 {% endif %}
             </td>
+            <td class="Pontos">{{ dados[sigla]['pontos'] }}</td>
+            <td class="Jogos">{{ dados[sigla]['jogos'] }}</td>
+            <td class="Vitórias">{{ dados[sigla]['vitorias'] }}</td>
+            <td class="Empates">{{ dados[sigla]['empates'] }}</td>
+            <td class="Derrotas">{{ dados[sigla]['derrotas'] }}</td>
         </tr>
         {% endfor %}
     </tbody>
