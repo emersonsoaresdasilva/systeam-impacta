@@ -21,26 +21,26 @@ th{
 }
 
 .vitoria{
-    background-color: #23b336;
+    color: #23b336;
 }
 
 .empate{
-    background-color: #949494b8;
+    color: black;
 }
 
 .derrota{
-    background-color: #f32626;
+    color: #f32626;
 }
 
-#modalConfirmaExclusao .modal-header{
+.modal-header{
     margin: auto;
 }
 
-#modalConfirmaExclusao .modal-body{
+.modal-body{
     padding: 15px 0px 0px 0px;
 }
 
-#modalConfirmaExclusao .modal-footer{
+.modal-footer{
     align-items: center;
     text-align: center;
     align-content: center;
@@ -48,3 +48,7 @@ th{
     margin: auto;
     border: none
 }
+/* .text-danger{
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+} */

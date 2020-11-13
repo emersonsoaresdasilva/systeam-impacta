@@ -17,17 +17,17 @@
                 <td class="font-weight-bold">Visitante 🏟️</td>
             </tr>
             {% for p in partidas %}
-            <tr 
-                    {% if not p.vencedor()%}
-                        class="empate"
-                    {% elif p.vencedor().sigla ==  equipe.sigla %}
-                        class="vitoria"
-                    {% else %}
-                        class="derrota"
-                    {% endif %}
-            >
+            <tr>
                 <td class="font-weight-bold">{{ p.equipe_casa.nome}}</td>
-                <td class="font-weight-bold">{{ p.pontos_casa }} x {{ p.pontos_visita}}</td>
+                <td
+                {% if not p.vencedor()%}
+                    class="font-weight-bold empate"
+                {% elif p.vencedor().sigla ==  equipe.sigla %}
+                    class="font-weight-bold vitoria"
+                {% else %}
+                    class="font-weight-bold derrota"
+                {% endif %}
+                >{{ p.pontos_casa }} x {{ p.pontos_visita}}</td>
                 <td class="font-weight-bold">{{ p.equipe_visita.nome }}</td>
             </tr>
             {% endfor %}
