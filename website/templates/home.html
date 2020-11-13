@@ -1,34 +1,36 @@
 {% extends 'base.html' %}
 {% block main %}
-<table class="table table-sm">
-    <thead>
-        <th colspan="6" class="font-weight-bold">CAMPEONATO BRASILEIRO DE FUTEBOL | SÉRIE A | 2020 🏆</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="font-weight-bold">Clube</td>
-            <td class="font-weight-bold">Pontos</td>
-            <td class="font-weight-bold">Jogos</td>
-            <td class="font-weight-bold">Vitórias</td>
-            <td class="font-weight-bold">Empates</td>
-            <td class="font-weight-bold">Derrotas</td>
-        </tr>
-        {% for sigla in dados %}
-        <tr>
-            <td class="Clube">
-                {% if admin %}
-                <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
-                {% else %}
-                <a href="/detalhes/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
-                {% endif %}
-            </td>
-            <td class="Pontos">{{ dados[sigla]['pontos'] }}</td>
-            <td class="Jogos">{{ dados[sigla]['jogos'] }}</td>
-            <td class="Vitórias">{{ dados[sigla]['vitorias'] }}</td>
-            <td class="Empates">{{ dados[sigla]['empates'] }}</td>
-            <td class="Derrotas">{{ dados[sigla]['derrotas'] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <table class="table table-sm">
+        <thead>            
+            <th colspan="6"><img src="/static/images/icon-classificacao-equipes.png" width="30%"></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="font-weight-bold">Clube</td>
+                <td class="font-weight-bold">Pontos</td>
+                <td class="font-weight-bold">Jogos</td>
+                <td class="font-weight-bold">Vitórias</td>
+                <td class="font-weight-bold">Empates</td>
+                <td class="font-weight-bold">Derrotas</td>
+            </tr>
+            {% for sigla in dados %}
+            <tr>
+                <td class="Clube">
+                    {% if admin %}
+                    <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
+                    {% else %}
+                    <a href="/detalhes/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
+                    {% endif %}
+                </td>
+                <td class="Pontos">{{ dados[sigla]['pontos'] }}</td>
+                <td class="Jogos">{{ dados[sigla]['jogos'] }}</td>
+                <td class="Vitórias">{{ dados[sigla]['vitorias'] }}</td>
+                <td class="Empates">{{ dados[sigla]['empates'] }}</td>
+                <td class="Derrotas">{{ dados[sigla]['derrotas'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block main %}
-{% for erro in erros %}
-    <div class="alert alert-danger">{{ erro }}</div>
-{% endfor %}
 <table class="table table-bordered">
+    {% for erro in erros %}
     <thead>
-        <th colspan="6">Equipes</th>
+        <th colspan="6">Equipes
+            <div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
+        </th>
     </thead>
+    {% endfor %}
     {% for msg in mensagens %}
     <script>alert("{{ msg }}")</script>
     {% endfor %}
@@ -28,7 +29,8 @@
                         class="btn btn-success">Alterar</button></a>
             </td>
             <td class="font-weight-normal">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmaExclusao{{ e.sigla }}">
+                <button type="button" class="btn btn-danger" data-toggle="modal"
+                    data-target="#modalConfirmaExclusao{{ e.sigla }}">
                     Deletar
                 </button>
             </td>
@@ -46,7 +48,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button" class="btn btn-danger">Deletar</button></a>
+                        <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button"
+                                class="btn btn-danger">Deletar</button></a>
                     </div>
                 </div>
             </div>

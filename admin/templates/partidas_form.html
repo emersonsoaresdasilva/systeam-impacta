@@ -17,7 +17,8 @@
                 </option>
                 {% endfor %}
             </select>
-            <small id="avisoEquipeCasa" class="form-text invalid-feedback">>Insira o time da casa.</small>
+            <small class="form-text text-muted">Selecione a equipe casa</small>
+            <small id="avisoEquipeCasa" class="form-text invalid-feedback"></small>
         </div>
         <div class="form-group">
             <select class="form-control" id='campoEquipeVisitante' name='equipevisitante'>
@@ -26,16 +27,19 @@
                 </option>
                 {% endfor %}
             </select>
-            <small id="avisoEquipeVisitante" class="form-text invalid-feedback">>Insira o time visitante.</small>
+            <small class="form-text text-muted">Selecione a equipe visitante</small>
+            <small id="avisoEquipeVisitante" class="form-text invalid-feedback"></small>
         </div>
         <div class="form-group">
             <input type="number" min="0" class="form-control" style="text-align: center;" id='campoPontosCasa'
                 name='pontoscasa' value='{{ partida.pontos_casa }}' placeholder="0" required>
+            <small class="form-text text-muted">Número de gols da equipe casa</small>
             <small id="avisoPontosCasa" class="form-text invalid-feedback"></small>
         </div>
         <div class="form-group">
             <input type="number" min="0" class="form-control" style="text-align: center;" id="campoPontosVisitante"
                 name='pontosvisitante' value='{{ partida.pontos_visita }}' placeholder="0" required>
+            <small class="form-text text-muted">Número de gols da equipe</small>
             <small id="avisoPontosVisitante" class="form-text invalid-feedback"></small>
         </div>
         <input type="hidden" name="id_partida_antiga" value="{{id_partida_antiga}}">

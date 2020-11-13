@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block main %}
 <form method="POST" class="text-center border border-light p-5" novalidate>
-    <p class="h4 mb-4"><img src="/static/images/icon-entrar.png" width="10%"></p>
-    <ul class="erros" {% if erros | length > 0 %} style="display: block;" {% endif %}</ul>
-        {% for erro in erros %}
-        <div class="alert alert-danger" role="alert">
+    <p><img src="/static/images/icon-entrar.png" width="10%"></p>
+    {% for erro in erros %}
+    <div class="form-group">
+        <div class="text-danger" role="alert">
             {{ erro }}
         </div>
-        {% endfor %}
+    </div>
+    {% endfor %}
+    <ul class="erros" {% if erros | length > 0 %} style="display: block;" {% endif %}</ul>
     </ul>
     <div class="form-group">
         <div class="col-md-2 offset-md-5">
