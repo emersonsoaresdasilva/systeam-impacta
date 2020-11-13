@@ -22,8 +22,7 @@ def home():
     return render_template( 
         'home.html',
         equipes=equipes,
-        dados=dados,
-        admin=True
+        dados=dados
     )
     return redirect(
         '/equipes'
@@ -40,8 +39,7 @@ def equipes():
     return render_template( 
         'equipes.html',
         equipes=equipes,
-        mensagens=mensagens,
-        admin=True
+        mensagens=mensagens
     )
 
 @admin_bp.route('/equipes/criar', methods=['GET', 'POST'])
@@ -62,8 +60,7 @@ def equipe_criar():
         'equipes_form.html',
         equipe='',
         funcao=funcao,
-        erros=erros,
-        admin=True
+        erros=erros
     )
 
 @admin_bp.route('/equipes/alterar/<sigla>', methods=['GET','POST'])
@@ -89,8 +86,7 @@ def equipe_alterar(sigla):
         equipe=equipe,
         funcao=funcao,
         erros=erros,
-        sigla_antiga=sigla,
-        admin=True
+        sigla_antiga=sigla
     )
 
 @admin_bp.route('/equipes/deletar/<sigla>', methods=['GET','POST'])
@@ -120,8 +116,7 @@ def partidas():
     return render_template( 
         'partidas.html',
         partidas=partidas,
-        mensagens=mensagens,
-        admin=True
+        mensagens=mensagens
         )
 
 @admin_bp.route('/partidas/criar', methods=['GET', 'POST'])
@@ -151,8 +146,7 @@ def partidas_criar():
         partida=Partida(None, None, 0, 0),
         equipe_casa=None,
         equipe_visita=None,
-        erros=erros,
-        admin=True
+        erros=erros
     )
 
 @admin_bp.route('/partidas/alterar/<sigla>', methods=['GET','POST'])
@@ -188,8 +182,7 @@ def partida_alterar(sigla):
         partida=partida,
         id_partida_antiga=partida.id(),
         funcao='Alterar',
-        erros=erros,
-        admin=True
+        erros=erros
     )
 
 

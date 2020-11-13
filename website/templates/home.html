@@ -17,7 +17,7 @@
             {% for sigla in dados %}
             <tr>
                 <td class="Clube">
-                    {% if admin %}
+                    {% if session['usermail']%} 
                     <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
                     {% else %}
                     <a href="/detalhes/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>

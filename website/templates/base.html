@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        {% if admin %}
+        {% if session['usermail']%} 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="nav-link active" href="/admin">Home</a>
             <a class="nav-link" href="/admin/equipes">Equipes</a>
