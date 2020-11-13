@@ -4,6 +4,33 @@ from database.dados import *
 def classificar_equipes(dados):
     pass
 
+def ordenar_pontos(dados):
+    pontos = []
+    equipes = []
+    pontos_ordenados = []
+
+    #Listando equipes e pontos (list).
+    for d in dados:
+        equipes.append(d)
+        pontos.append(dados[d]['pontos'])
+
+    #Ordenação de pontos.
+    for _ in range(len(pontos)):
+        i = pontos.index(max(pontos))   #Maior pontos na lista.
+        if len(pontos_ordenados) > 0:
+            if pontos_ordenados[-1] != pontos[i]:
+                pontos_ordenados.append(i)
+        else:
+            pontos_ordenados.append(i)
+        pontos[i] = 0
+
+    #Ordenação de equipes.    
+    equipes_pontos = []
+
+    for p in pontos_ordenados:
+        equipes_pontos.append(equipes[p])
+    return equipes_pontos
+
 ''' BANCO DADOS EQUIPE '''
 def criar_equipe(equipe):
     if pegar_equipe(equipe.sigla) == False:
