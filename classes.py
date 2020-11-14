@@ -21,35 +21,77 @@ class Equipe(object):
     @classmethod
     def ordenar_por_pontos(cls, dados):
         pontos = []
+        vitorias = []
+        empates = []
         equipes = []
-        pontos_ordenados = []
-
         # Listando equipes e pontos (list).
         for dado in dados:
             equipes.append(dado)
             pontos.append(dados[dado]['pontos'])
+            vitorias.append(dados[dado]['vitorias'])
+            empates.append(dados[dado]['empates'])
 
-        # Ordenação de pontos.
-        for _ in range(len(pontos)):
-            i = pontos.index(max(pontos))  # Maior pontos na lista.
-            if len(pontos_ordenados) > 0:
-                if pontos_ordenados[-1] != pontos[i]:
-                    pontos_ordenados.append(i)
-            else:
-                pontos_ordenados.append(i)
-            pontos[i] = 0
+        ordenacoes = cls.ordernar_por(vitorias, equipes, pontos, vitorias, empates)
+        equipes = ordenacoes[0]
+        pontos = ordenacoes[1]
+        vitorias = ordenacoes[2]
+        empates = ordenacoes[3]
 
-        # Ordenação de equipes.
-        equipes_pontos = []
+        ordenacoes = cls.ordernar_por(pontos, equipes, pontos, vitorias, empates)
+        equipes = ordenacoes[0]
+        pontos = ordenacoes[1]
+        vitorias = ordenacoes[2]
+        empates = ordenacoes[3]
 
-        for pontos in pontos_ordenados:
-            equipes_pontos.append(equipes[pontos])
-
+        #TRATAMENTO FINAL
         # Retornando os dados ordenados.
         dados_ordenados = {}
-        for sigla in equipes_pontos:
+        count = 1
+        for sigla in equipes:
             dados_ordenados[sigla] = dados[sigla]
+            dados_ordenados[sigla]['posicao'] = count
+            count += 1
+        print(dados_ordenados)
         return dados_ordenados
+
+    @classmethod
+    def ordernar_por(cls, criterio, equipes, pontos, vitorias, empates):
+        indices_ordenados = []
+        for _ in range(len(criterio)):
+            i = criterio.index(max(criterio)) #Índice do maior 'criterio' na lista.
+            indices_ordenados.append(i)
+            criterio[i] = -1
+        
+        equipes_ordenadas = []
+        for i in  indices_ordenados:
+            equipes_ordenadas.append(equipes[i])
+
+        if criterio != pontos:
+            pontos_ordenados = []
+            for i in  indices_ordenados:
+                pontos_ordenados.append(pontos[i])
+        else:
+            pontos_ordenados = pontos
+
+        if criterio != vitorias:
+            vitorias_ordenadas = []
+            for i in  indices_ordenados:
+                vitorias_ordenadas.append(vitorias[i])
+        else:
+            vitorias_ordenadas = vitorias
+
+        if criterio != empates:
+            empates_ordenados = []
+            for i in  indices_ordenados:
+                empates_ordenados.append(empates[i])
+        else:
+            empates_ordenados = empates
+
+        return [equipes_ordenadas, pontos_ordenados,  vitorias_ordenadas, empates_ordenados]
+
+
+
+
 
 class Partida(object):
 

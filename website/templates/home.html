@@ -7,6 +7,7 @@
         </thead>
         <tbody>
             <tr>
+                <td class="font-weight-bold">#</td>
                 <td class="font-weight-bold">Clube</td>
                 <td class="font-weight-bold">Pontos</td>
                 <td class="font-weight-bold">Jogos</td>
@@ -16,6 +17,7 @@
             </tr>
             {% for sigla in dados %}
             <tr>
+                <td>{{ dados[sigla]['posicao'] }}° </td>
                 <td class="Clube">
                     {% if session['usermail']%} 
                     <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
