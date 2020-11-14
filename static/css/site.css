@@ -1,20 +1,37 @@
 body{
     font-family: monospace;
-    zoom: 1.4;
+    background-image: url('/static/images/bg.jpg');
+    background-size: cover;
+    zoom: 1.48;
+    min-height: 70vh;
 }
 body footer{
     text-align: center;
     padding: 10px;
     color: black;
 }
+
+nav{
+    background-color: #2F4F4F;
+}
+
+nav a{
+    color: white;
+}
 table, td, th, div{
     text-align: center;
 }
-a:link {text-decoration:none;}
+a {text-decoration:none;
+color: white;}
+
+a:hover{
+    color:#a4ddfc;
+}
 
 th{
-    font-size: 25px;
+    font-size: 15px;
     text-align: center;
+    border:none!important;
 }
 .form-control {
     -webkit-box-shadow: 0 3px 10px -6px #000;
@@ -53,3 +70,32 @@ th{
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
 } */
+
+
+/* imagens */
+#imgAdmin{
+    width: 30px;
+}
+
+.div-tabela{
+    background-color: #f8f8f8c7;
+    padding: 0px 0px 3px 0px;
+    box-shadow: 0px 0px 15px #000000d9;
+}
+
+.table{
+    margin-bottom: unset;
+}
+
+tbody tr:first-child{
+    background-color: #2f4f4f;
+    color:white;
+}
+
+.img-titulo img{
+    width:500px;
+}
+
+.table .btn{
+    padding: 1px!important;
+}

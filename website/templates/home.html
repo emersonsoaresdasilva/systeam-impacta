@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
 {% block main %}
 <div class="container-fluid">
-    <table class="table table-sm">
-        <thead>            
-            <th colspan="6"><img src="/static/images/icon-classificacao-equipes.png" width="30%"></th>
-        </thead>
+    <div class="img-titulo"><img src="/static/images/icon-classificacao-equipes.png"></div>
+    <div class="div-tabela">
+        <table class="table table-sm">
         <tbody>
-            <tr>
-                <td class="font-weight-bold">#</td>
-                <td class="font-weight-bold">Clube</td>
-                <td class="font-weight-bold">Pontos</td>
-                <td class="font-weight-bold">Jogos</td>
-                <td class="font-weight-bold">Vitórias</td>
-                <td class="font-weight-bold">Empates</td>
-                <td class="font-weight-bold">Derrotas</td>
-            </tr>
+            <div>
+                <th class="font-weight-bold">#</th>
+                <th class="font-weight-bold">Clube</th>
+                <th class="font-weight-bold">Pontos</th>
+                <th class="font-weight-bold">Jogos</th>
+                <th class="font-weight-bold">Vitórias</th>
+                <th class="font-weight-bold">Empates</th>
+                <th class="font-weight-bold">Derrotas</th>
+            </div>
             {% for sigla in dados %}
             <tr>
                 <td>{{ dados[sigla]['posicao'] }}° </td>

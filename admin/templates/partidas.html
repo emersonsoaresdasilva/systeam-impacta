@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block main %} 
-<table class="table table-bordered">
+<div class="div-tabela">
+<table class="table">
     <tbody>
         <thead>
             <th colspan="6">Partidas</th>
@@ -9,17 +10,16 @@
             <script>alert("{{ msg }}")</script>
         {% endfor %}
         <tr>
-            <td class="font-weight-bold">Time Casa 🏡</td>
-            <td class="font-weight-bold" colspan="2">Gols ⚽</td>
-            <td class="font-weight-bold">Visitante 🏟️</td>
+            <td class="font-weight-bold">🏡 Time Casa </td>
+            <td class="font-weight-bold" colspan="1">⚽ Placar </td>
+            <td class="font-weight-bold">✈️ Visitante </td>
             <td class="font-weight-bold" colspan="2"><a href="/admin/partidas/criar">
                     <button type="button" class="btn btn-primary">Adicionar</button></a></td>
         </tr>
         {% for p in partidas %}
         <tr>
             <td>({{p.equipe_casa.sigla}}) {{ p.equipe_casa.nome }} <br> {{ p.equipe_casa.local}}</td>
-            <td>{{ p.pontos_casa}}</td>
-            <td>{{ p.pontos_visita}}</td>
+            <td>{{ p.pontos_casa}} X {{ p.pontos_visita}}</td>
             <td>({{p.equipe_visita.sigla}}) {{ p.equipe_visita.nome }} <br> {{ p.equipe_visita.local}}</td>
             <td>
                 <a href="/admin/partidas/alterar/{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}"><button
@@ -55,4 +55,5 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% endblock %}

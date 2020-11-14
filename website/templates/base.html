@@ -13,18 +13,17 @@
 </head>
 <body>
     <header>
-        
         {% if session['usermail']%} 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <a class="nav-link active" href="/admin">Home</a>
             <a class="nav-link" href="/admin/equipes">Equipes</a>
             <a class="nav-link" href="/admin/partidas ">Partidas</a>
-            <a class="nav-link" href="/admin/sair" style="margin-left: auto; color: red;">Sair</a>
+            <a class="nav-link" href="/admin/sair" style="margin-left: auto;">Sair</a>
         </nav>
         {% else %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/entrar" style="margin-left: auto; color: green;">Admin</a>
+            <a class="nav-link" href="/entrar" style="margin-left: auto;"><img id="imgAdmin" src="/static/images/icon-entrar.png"></a>
         </nav>
         {% endif %}
    </header>
