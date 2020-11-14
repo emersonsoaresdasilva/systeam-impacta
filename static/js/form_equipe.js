@@ -47,6 +47,3 @@ function valida_vazio(campo, aviso){
         return true
     }
 }
-
-//Função para fazer errros de servidor desaparecer após um tempo
-//setTimeout(function(){document.querySelector('.text-danger').style.display = 'none'}, 3000)

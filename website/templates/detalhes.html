@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
+{% block title %}
+    SysTeam: Detalhes {{ equipe.sigla }}
+{% endblock %}
 {% block main %}
-<div>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th colspan="6">                    
-                    Partidas da {{equipe.nome}} 🥅
-                <h4>Sigla: {{ equipe.sigla }} | Origem: {{equipe.local}}</h4>
-                </th>
-            </tr>
-        </thead>
+<div class="img-titulo"><!-- Renomera pois n serve so pra img-->
+    <h2>{{equipe.nome}}</h2>
+    <p>Sigla: {{ equipe.sigla }} | Origem: {{equipe.local}}</p>
+</div>
+<div class="div-tabela">
+    <table class="table">
         <tbody>
             <tr>
                 <td class="font-weight-bold">Casa 🏡</td>
@@ -19,15 +18,16 @@
             {% for p in partidas %}
             <tr>
                 <td class="font-weight-bold">{{ p.equipe_casa.nome}}</td>
-                <td
+                
                 {% if not p.vencedor()%}
-                    class="font-weight-bold empate"
+                <td class="font-weight-bold empate">
                 {% elif p.vencedor().sigla ==  equipe.sigla %}
-                    class="font-weight-bold vitoria"
+                <td class="font-weight-bold vitoria">
                 {% else %}
-                    class="font-weight-bold derrota"
+                <td class="font-weight-bold derrota">
                 {% endif %}
-                >{{ p.pontos_casa }} x {{ p.pontos_visita}}</td>
+                    {{ p.pontos_casa }} x {{ p.pontos_visita}}
+                </td>
                 <td class="font-weight-bold">{{ p.equipe_visita.nome }}</td>
             </tr>
             {% endfor %}

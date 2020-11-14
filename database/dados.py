@@ -2,10 +2,9 @@ from classes import Equipe, Partida, Usuario
 
 EQUIPES = [
     Equipe('Corinthians', 'COR', 'São Paulo-SP'),
-    Equipe('São Paulo', 'SPA', 'São Paulo-SP'),
+    Equipe('São Paulo', 'SAO', 'São Paulo-SP'),
     Equipe('Santos', 'SAN', 'São Paulo-SP'),
     Equipe('Palmeiras', 'PAL', 'São Paulo-SP'),
-    Equipe('Corinthians', 'COR', 'São Paulo-SP'),
     Equipe('Fluminense', 'FLU', 'Rio de Janeiro-RJ'),
     Equipe('Vasco', 'VAS', 'Rio de Janeiro-RJ'),
     Equipe('Botafogo', 'BOT', 'Rio de Janeiro-RJ'),

@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block main %}
-<form method="POST" class="text-center border border-light p-5" id="formEquipe" novalidate>
-    <img src="/static/images/icon-equipes.png" width="15%">
+<!-- Imagem do formulário -->
+<div class="imgForm">
+    <img src="/static/images/icon-equipes.png">
+</div>
+
+<form method="POST" class="text-center" id="formEquipe" novalidate>
     <div class="col-md-2 offset-md-5">
+        <!-- Exibição de erros -->
         {% for erro in erros %}
         <div class="form-group">
             <div class="text-danger" role="alert">
@@ -10,27 +15,29 @@
             </div>
         </div>
         {% endfor %}
+        <!-- Fim Exibição de erros -->
         <div class="form-group">
-            <input type="text" class="form-control" style="text-align: center;" id="campoNome" name='nome'
+            <input type="text" class="form-control" id="campoNome" name='nome'
                 value='{{ equipe.nome }}' placeholder="Nome" required>
-            <small class="form-text text-muted">Insira o nome completo da equipe.</small>
+            <small class="form-text text-muted">Insira o nome completo do clube.</small>
             <small id="avisoNome" class="form-text text-danger"></small>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" style="text-align: center;" id="campoSigla" name='sigla'
+            <input type="text" class="form-control" id="campoSigla" name='sigla'
                 value='{{ equipe.sigla }}' placeholder="Sigla" required>
-            <small class="form-text text-muted">Insira a sigla da equipe.</small>
+            <small class="form-text text-muted">Insira a sigla do clube.</small>
             <small id="avisoSigla" class="form-text text-danger"></small>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" style="text-align: center;" id="campoLocal" name='local'
+            <input type="text" class="form-control" id="campoLocal" name='local'
                 value='{{ equipe.local }}' placeholder="Local" required>
-            <small class="form-text text-muted">Insira o local de origem da equipe.</small>
+            <small class="form-text text-muted">Insira o local de origem do clube.</small>
             <small id="avisoLocal" class="form-text text-danger"></small>
         </div>
         <input type="hidden" name="sigla_antiga" value="{{sigla_antiga}}">
         <button type="button" id="btnSubmit" class="btn btn-block my-4">{{ funcao }}</button>
         <button type="reset" id="btnReset" class="btn btn-warning btn-block my-4">Limpar</button>
+    </div>
 </form>
 {% endblock %}
 

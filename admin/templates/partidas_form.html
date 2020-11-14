@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block main %}
-<form method="POST" id="formPartida" class="text-center border border-light p-5">
-    <img src="/static/images/icon-partidas.png" width="15%">
+<!-- Imagem do formulário -->
+<div class="imgForm">
+    <img src="/static/images/icon-partidas.png">
+</div>
+
+<form method="POST" id="formPartida" class="text-center">
     <div class="col-sm-8  offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+        <!-- Exibição de erros -->
         {% for erro in erros %}
         <div class="form-group">
             <div class="text-danger" role="alert">
@@ -10,11 +15,15 @@
             </div>
         </div>
         {% endfor %}
+        <!-- Fim exibição de erros -->
         <div class="form-group">
             <select class="form-control" id='campoEquipeCasa' name='equipecasa'>
                 {% for e in equipes %}
-                <option {% if e.sigla == equipe_casa.sigla %} selected {%endif%} value="{{ e.sigla }}">{{ e.nome }}
-                </option>
+                    {% if e.sigla == equipe_casa.sigla %} 
+                    <option selected value="{{ e.sigla }}">{{ e.nome }}</option> 
+                    {% else %}
+                    <option value="{{ e.sigla }}">{{ e.nome }}</option>
+                    {%endif%}
                 {% endfor %}
             </select>
             <small class="form-text text-muted">Selecione a equipe casa</small>
@@ -23,8 +32,11 @@
         <div class="form-group">
             <select class="form-control" id='campoEquipeVisitante' name='equipevisitante'>
                 {% for e in equipes %}
-                <option {% if e.sigla == equipe_visita.sigla %} selected {%endif%} value="{{ e.sigla }}">{{ e.nome }}
-                </option>
+                    {% if e.sigla == equipe_visita.sigla %} 
+                    <option selected value="{{ e.sigla }}">{{ e.nome }}</option> 
+                    {% else %}
+                    <option value="{{ e.sigla }}">{{ e.nome }}</option>
+                    {%endif%}
                 {% endfor %}
             </select>
             <small class="form-text text-muted">Selecione a equipe visitante</small>
@@ -48,6 +60,7 @@
     </div>
 </form>
 {% endblock %}
+
 {% block scripts %}
 <script src="/static/js/form_partida.js"></script>
 {% endblock %}

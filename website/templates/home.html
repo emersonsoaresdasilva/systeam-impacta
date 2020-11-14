@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+{% block title %}
+    SysTeam: Classificação
+{% endblock %}
 {% block main %}
-<div class="container-fluid">
-    <div class="img-titulo"><img src="/static/images/icon-classificacao-equipes.png"></div>
-    <div class="div-tabela">
-        <table class="table table-sm">
+<div class="img-titulo"><!-- Renomera pois n serve só pra img-->
+    <img src="/static/images/icon-classificacao-equipes.gif">
+</div>
+<div class="div-tabela"><!-- Renomear para tabela-campeonato -->
+    <table class="table">
         <tbody>
             <div>
                 <th class="font-weight-bold">#</th>
@@ -18,7 +22,7 @@
             <tr>
                 <td>{{ dados[sigla]['posicao'] }}° </td>
                 <td class="Clube">
-                    {% if session['usermail']%} 
+                    {% if session['usermail']%}
                     <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
                     {% else %}
                     <a href="/detalhes/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>

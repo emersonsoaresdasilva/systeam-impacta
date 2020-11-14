@@ -2,15 +2,13 @@
 {% block main %}
 <form method="POST" class="text-center" novalidate>
     <p><img src="/static/images/icon-entrar.png" width="10%"></p>
-    {% for erro in erros %}
+    {% for erro in session['erros'] %}
     <div class="form-group">
         <div class="text-danger" role="alert">
             {{ erro }}
         </div>
     </div>
     {% endfor %}
-    <ul class="erros" {% if erros | length > 0 %} style="display: block;" {% endif %}</ul>
-    </ul>
     <div class="form-group">
         <div class="col-md-2 offset-md-5">
             <label for="exampleInputEmail1">Endereço de e-mail</label>
