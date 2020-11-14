@@ -54,5 +54,3 @@ function valida_equipes(equipeCasa, avisoCasa, equipeVisita, avisoVisita){
     }
     return true
 }
-
-setTimeout(function(){document.querySelector('.text-danger').style.display = 'none'},3000)

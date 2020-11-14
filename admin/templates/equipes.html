@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block main %}
+{% for msg in mensagens %}
+<script>alert("{{ msg }}")</script>
+{% endfor %}
+{% for erro in erros %}
+<div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
+{% endfor %}
 <div class="div-tabela">
 <table class="table">
     <thead>
-        {% for erro in erros %}
-        <div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
-        {% endfor %}
     </thead>
-    {% for msg in mensagens %}
-    <script>alert("{{ msg }}")</script>
-    {% endfor %}
     <tbody>
         <tr>
             <td class="font-weight-bold">🚩 Clube </td>
