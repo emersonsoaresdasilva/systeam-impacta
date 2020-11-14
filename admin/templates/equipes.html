@@ -3,11 +3,9 @@
 <div class="div-tabela">
 <table class="table">
     <thead>
-        <th colspan="6">Equipes
-            {% for erro in erros %}
-            <div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
-            {% endfor %}
-        </th>
+        {% for erro in erros %}
+        <div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
+        {% endfor %}
     </thead>
     {% for msg in mensagens %}
     <script>alert("{{ msg }}")</script>

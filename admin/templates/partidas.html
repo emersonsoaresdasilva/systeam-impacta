@@ -3,9 +3,6 @@
 <div class="div-tabela">
 <table class="table">
     <tbody>
-        <thead>
-            <th colspan="6">Partidas</th>
-        </thead>
         {% for msg in mensagens %}
             <script>alert("{{ msg }}")</script>
         {% endfor %}
@@ -18,9 +15,9 @@
         </tr>
         {% for p in partidas %}
         <tr>
-            <td>({{p.equipe_casa.sigla}}) {{ p.equipe_casa.nome }} <br> {{ p.equipe_casa.local}}</td>
+            <td><b>({{p.equipe_casa.sigla}}) {{ p.equipe_casa.nome }} </b><br> {{ p.equipe_casa.local}}</td>
             <td>{{ p.pontos_casa}} X {{ p.pontos_visita}}</td>
-            <td>({{p.equipe_visita.sigla}}) {{ p.equipe_visita.nome }} <br> {{ p.equipe_visita.local}}</td>
+            <td><b>({{p.equipe_visita.sigla}}) {{ p.equipe_visita.nome }}</b> <br> {{ p.equipe_visita.local}}</td>
             <td>
                 <a href="/admin/partidas/alterar/{{ p.equipe_casa.sigla + p.equipe_visita.sigla }}"><button
                         type="button" class="btn btn-success">Alterar</button></a>

@@ -8,7 +8,7 @@ admin_bp = Blueprint(
     template_folder='templates'    
 )
 
-@admin_bp.route('/')
+@admin_bp.route('')
 def home():
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
@@ -95,14 +95,17 @@ def deletar_equipes(sigla):
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
     if len(listar_partidas_da_equipe(sigla)) == 0:
-        deletar_equipe(sigla)
+        if(deletar_equipe(sigla)):       
+            return redirect(
+                '/admin/equipes?acao=Deletada'
+            )
     else:
         equipes = pegar_equipe()
         erros.append("Não é possível deletar equipes que possuem vínculos com partidas!")
         return render_template('equipes.html',equipes=equipes, erros=erros)   
     
     return redirect(
-        '/admin/equipes?acao=Deletada'
+        '/admin/equipes'
     )
 
 @admin_bp.route('/partidas', methods=['GET'])
@@ -184,19 +187,21 @@ def partida_alterar(sigla):
         funcao='Alterar',
         erros=erros
     )
-
-
-    return redirect('admin/partidas/alterar/'+sigla)
+    return redirect('admin/partidas/alterar/' + sigla)
 
 @admin_bp.route('/partidas/deletar/<id>', methods=['GET','POST'])
 def partida_deletar(id):
     avisos = []
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
-    deletar_partida(id)
-    return redirect(
-        '/admin/partidas?acao=Deletado'
-    )
+    if (deletar_partida(id)):
+        return redirect(
+            '/admin/partidas?acao=Deletado'
+        )
+    else:
+        return redirect(
+            '/admin/partidas'
+        )
 
 @admin_bp.route('/sair')
 def sair():
