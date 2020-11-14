@@ -1,17 +1,18 @@
-body{
+body {
     font-family: monospace;
-    background-image: url('/static/images/bg.jpg');
+    background-image: url('/static/images/background.jpg');
     background-size: cover;
     zoom: 1.48;
     min-height: 70vh;
 }
-body footer{
+body footer {
     text-align: center;
-    padding: 10px;
-    color: black;
+    padding: 0px;
+    color: white;
+    background-color: darkslategrey;
 }
 
-nav{
+nav {
     background-color: #2F4F4F;
 }
 
@@ -24,20 +25,20 @@ a {
     color:#538c8c;
 }
 
-a:hover, .active{
+a:hover, .active {
     color: white;
     text-decoration: none;
 }   
 
-td a{
+td a {
     color: #000000;
 }
 
-td a:hover{
+td a:hover {
     color:#538c8c;
 }
 
-th{
+th {
     font-size: 15px;
     text-align: center;
     border:none!important;
@@ -48,46 +49,45 @@ th{
     box-shadow: 0 3px 10px -6px #000;
 }
 
-.vitoria{
+.vitoria {
     color: #23b336;
 }
 
-.empate{
+.empate {
     color: black;
 }
 
-.derrota{
+.derrota {
     color: #f32626;
 }
 
-.modal-header{
+.modal-header {
     margin: auto;
 }
 
-.modal-body{
+.modal-body {
     padding: 15px 0px 0px 0px;
 }
 
-.modal-footer{
+.modal-footer {
     align-items: center;
     text-align: center;
     align-content: center;
     display: flex;
     margin: auto;
-    border: none
+    border: none;
 }
 /* .text-danger{
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
 } */
 
-
 /* imagens */
-#imgAdmin{
+#imgAdmin {
     width: 30px;
 }
 
-.div-tabela{
+.div-tabela {
     background-color: #f8f8f8c7;
     padding: 0px 0px 3px 0px;
     box-shadow: 0px 0px 5px #000000d9;
@@ -96,27 +96,38 @@ th{
     margin: 10px auto;  
 }
 
-.table{
+.table {
     margin-bottom: unset;
 }
 
-tbody tr:first-child{
+tbody tr:first-child {
     background-color: #2f4f4f;
     color:white;
     border-top:none!important;
 }
 
-tbody tr:first-child td{
+tbody tr:first-child td {
     border-top:none!important;
 }
 
-
-
-
-.img-titulo img{
+.img-titulo img {
     width:500px;
 }
 
-.table .btn{
+.table .btn {
     padding: 1px!important;
+}
+
+#btnSubmit {
+    background-color: #2F4F4F;
+    color: white;
+}
+
+#btnReset {
+    color: white !important;
+}
+
+#btnEntrar {
+    background-color: #2F4F4F;
+    color: white;
 }

@@ -32,34 +32,36 @@
                  </svg></a>
                     <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#modalConfirmaExclusao{{ e.sigla }}">
-                        <svg width="20px" height="15px" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        <svg width="20px" height="15px" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
                         </svg>
                     </button>
                 </td>
-        </tr>
-        <!-- Modal de confirmação de exclusão de equipe -->
-        <div class="modal fade" id="modalConfirmaExclusao{{ e.sigla }}" tabindex="-1" role="dialog"
-            aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Confirmação</h5>
-                    </div>
-                    <div class="modal-body">
-                        Deseja realmente deletar a equipe {{ e.nome }}?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button"
-                                class="btn btn-danger">Deletar</button></a>
+            </tr>
+            <!-- Modal de confirmação de exclusão de equipe -->
+            <div class="modal fade" id="modalConfirmaExclusao{{ e.sigla }}" tabindex="-1" role="dialog"
+                aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmação</h5>
+                        </div>
+                        <div class="modal-body">
+                            Deseja realmente deletar a equipe {{ e.nome }}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button"
+                                    class="btn btn-danger">Deletar</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Fim modal-->
-        {% endfor %}
-    </tbody>
-</table>
+            <!-- Fim modal-->
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
