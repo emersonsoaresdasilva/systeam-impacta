@@ -1,65 +1,72 @@
 {% extends 'base.html' %}
 {% block main %}
 <div class="div-tabela">
-<table class="table">
-    <thead>
-        {% for erro in erros %}
-        <div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
+    <table class="table">
+        <thead>
+            {% for erro in erros %}
+            <div class="text-danger font-weight-normal" style="font-size: 14px;">{{ erro }}</div>
+            {% endfor %}
+        </thead>
+        {% for msg in mensagens %}
+        <script>alert("{{ msg }}")</script>
         {% endfor %}
-    </thead>
-    {% for msg in mensagens %}
-    <script>alert("{{ msg }}")</script>
-    {% endfor %}
-    <tbody>
-        <tr>
-            <td class="font-weight-bold">🚩 Clube </td>
-            <td class="font-weight-bold">📛 Sigla </td>
-            <td class="font-weight-bold">📍 Local </td>
-            <td class="font-weight-bold">
-                <a class="btn btn-success bi" href="/admin/equipes/criar">
-                    <svg width="25px" height="20px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg></a></td>
-        </tr>
-        {% for e in equipes %}
-        <tr>
-            <td class="font-weight-normal">{{ e.nome }}</td>
-            <td class="font-weight-normal">{{ e.sigla }}</td>
-            <td class="font-weight-normal">{{ e.local }}</td>
-            <td class="font-weight-normal">
-                <a class="btn btn-info" href="/admin/equipes/alterar/{{ e.sigla }}"><svg width="20px" height="15px" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                 </svg></a>
+        <tbody>
+            <tr>
+                <td class="font-weight-bold">🚩 Clube </td>
+                <td class="font-weight-bold">📛 Sigla </td>
+                <td class="font-weight-bold">📍 Local </td>
+                <td class="font-weight-bold">
+                    <a class="btn btn-success bi" href="/admin/equipes/criar">
+                        <svg width="25px" height="20px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg></a></td>
+            </tr>
+            {% for e in equipes %}
+            <tr>
+                <td class="font-weight-normal">{{ e.nome }}</td>
+                <td class="font-weight-normal">{{ e.sigla }}</td>
+                <td class="font-weight-normal">{{ e.local }}</td>
+                <td class="font-weight-normal">
+                    <a class="btn btn-info" href="/admin/equipes/alterar/{{ e.sigla }}"><svg width="20px" height="15px"
+                            viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                        </svg></a>
                     <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#modalConfirmaExclusao{{ e.sigla }}">
-                        <svg width="20px" height="15px" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                        <svg width="20px" height="15px" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
                         </svg>
                     </button>
                 </td>
-        </tr>
-        <!-- Modal de confirmação de exclusão de equipe -->
-        <div class="modal fade" id="modalConfirmaExclusao{{ e.sigla }}" tabindex="-1" role="dialog"
-            aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Confirmação</h5>
-                    </div>
-                    <div class="modal-body">
-                        Deseja realmente deletar a equipe {{ e.nome }}?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button"
-                                class="btn btn-danger">Deletar</button></a>
+            </tr>
+            <!-- Modal de confirmação de exclusão de equipe -->
+            <div class="modal fade" id="modalConfirmaExclusao{{ e.sigla }}" tabindex="-1" role="dialog"
+                aria-labelledby="modalConfirmaExclusao" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmação</h5>
+                        </div>
+                        <div class="modal-body">
+                            Deseja realmente deletar a equipe {{ e.nome }}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <a href="/admin/equipes/deletar/{{ e.sigla }}"><button type="button"
+                                    class="btn btn-danger">Deletar</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Fim modal-->
-        {% endfor %}
-    </tbody>
-</table>
+            <!-- Fim modal-->
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

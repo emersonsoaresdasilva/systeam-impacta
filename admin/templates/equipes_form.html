@@ -26,8 +26,8 @@
             <small class="form-text text-muted">Insira o local de origem da equipe.</small>
         </div>
         <input type="hidden" name="sigla_antiga" value="{{sigla_antiga}}">
-        <button type="submit" class="btn btn-success btn-block my-4">{{ funcao }}</button>
-        <button type="reset" class="btn btn-warning btn-block my-4">Limpar</button>
+        <button type="submit" id="btnSubmit" class="btn btn-block my-4">{{ funcao }}</button>
+        <button type="reset" id="btnReset" class="btn btn-warning btn-block my-4">Limpar</button>
 </form>
 {% endblock %}
 
