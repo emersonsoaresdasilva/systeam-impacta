@@ -54,7 +54,9 @@ def entrar():
         user = pegar_usuario(email, senha)
         if user:
             session['usermail'] = email
-        erros.append('E-mail ou senha incorretos.') 
+            return redirect('admin')
+        else:
+            erros.append('E-mail ou senha incorretos.')
+            session['erros'] = erros
     #GET
-    session['erros'] = erros
     return render_template('entrar.html')

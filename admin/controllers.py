@@ -8,7 +8,7 @@ admin_bp = Blueprint(
     template_folder='templates'    
 )
 
-@admin_bp.route('')
+@admin_bp.route('/')
 def home():
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
