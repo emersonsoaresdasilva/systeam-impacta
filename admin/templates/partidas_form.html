@@ -1,59 +1,66 @@
 {% extends 'base.html' %}
 {% block main %}
 <!-- Imagem do formulário -->
-<div class="imgForm">
+<div class="imgFormPartida">
     <img src="/static/images/icon-partidas.png">
 </div>
 
 <form method="POST" id="formPartida" class="text-center">
-    <div class="col-sm-8  offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
-        <!-- Exibição de erros -->
-        {% for erro in erros %}
-        <div class="form-group">
-            <div class="text-danger" role="alert">
-                {{ erro }}
+    <!-- Exibição de erros -->
+    {% for erro in erros %}
+    <div class="form-group">
+        <div class="text-danger" role="alert">
+            {{ erro }}
+        </div>
+    </div>
+    {% endfor %}
+    <!-- Fim exibição de erros -->
+    <div class="col-md-8.5 offset-md-3">
+        <div class="form-row">
+            <div class="form-group col-md-3.1">
+                <select class="form-control" id='campoEquipeCasa' name='equipecasa'>
+                    {% for e in equipes %}
+                        {% if e.sigla == equipe_casa.sigla %}
+                        <option selected value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {% else %}
+                        <option value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {%endif%}
+                    {% endfor %}
+                </select>
+                <small class="form-text text-muted">Clube da casa</small>
+                <small id="avisoEquipeCasa" class="form-text invalid-feedback"></small>
             </div>
-        </div>
-        {% endfor %}
-        <!-- Fim exibição de erros -->
-        <div class="form-group">
-            <select class="form-control" id='campoEquipeCasa' name='equipecasa'>
-                {% for e in equipes %}
-                    {% if e.sigla == equipe_casa.sigla %} 
-                    <option selected value="{{ e.sigla }}">{{ e.nome }}</option> 
-                    {% else %}
-                    <option value="{{ e.sigla }}">{{ e.nome }}</option>
-                    {%endif%}
-                {% endfor %}
-            </select>
-            <small class="form-text text-muted">Selecione a equipe casa</small>
-            <small id="avisoEquipeCasa" class="form-text invalid-feedback"></small>
-        </div>
-        <div class="form-group">
-            <select class="form-control" id='campoEquipeVisitante' name='equipevisitante'>
-                {% for e in equipes %}
-                    {% if e.sigla == equipe_visita.sigla %} 
-                    <option selected value="{{ e.sigla }}">{{ e.nome }}</option> 
-                    {% else %}
-                    <option value="{{ e.sigla }}">{{ e.nome }}</option>
-                    {%endif%}
-                {% endfor %}
-            </select>
-            <small class="form-text text-muted">Selecione a equipe visitante</small>
-            <small id="avisoEquipeVisitante" class="form-text invalid-feedback"></small>
-        </div>
-        <div class="form-group">
-            <input type="number" min="0" class="form-control" style="text-align: center;" id='campoPontosCasa'
-                name='pontoscasa' value='{{ partida.pontos_casa }}' placeholder="0" required>
-            <small class="form-text text-muted">Número de gols da equipe casa</small>
-            <small id="avisoPontosCasa" class="form-text invalid-feedback"></small>
-        </div>
-        <div class="form-group">
-            <input type="number" min="0" class="form-control" style="text-align: center;" id="campoPontosVisitante"
-                name='pontosvisitante' value='{{ partida.pontos_visita }}' placeholder="0" required>
-            <small class="form-text text-muted">Número de gols da equipe</small>
-            <small id="avisoPontosVisitante" class="form-text invalid-feedback"></small>
-        </div>
+            <div class="col-md-2">
+                <input type="number" min="0" class="form-control" style="text-align: center;" id='campoPontosCasa' name='pontoscasa'
+                    value='{{ partida.pontos_casa }}' placeholder="0" required>
+                <small id="avisoPontosCasa" class="form-text invalid-feedback"></small>
+                <small class="form-text text-muted">Gols do clube</small>
+            </div>
+
+            <b style="padding: 10px; font-size: 15px;">vs</b> <!-- Ajustar para o arquivo CSS -->
+
+            <div class="col-md-2">
+                <input type="number" min="0" class="form-control" style="text-align: center;" id="campoPontosVisitante"
+                    name='pontosvisitante' value='{{ partida.pontos_visita }}' placeholder="0" required>
+                <small id="avisoPontosVisitante" class="form-text invalid-feedback"></small>
+                <small class="form-text text-muted">Gols do clube</small>
+            </div>
+            <div class="form-group col-md-3.1">
+                <select class="form-control" id='campoEquipeVisitante' name='equipevisitante'>
+                    {% for e in equipes %}
+                        {% if e.sigla == equipe_visita.sigla %}
+                        <option selected value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {% else %}
+                        <option value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {%endif%}
+                    {% endfor %}
+                </select>
+                <small class="form-text text-muted">Clube visitante</small>
+                <small id="avisoEquipeVisitante" class="form-text invalid-feedback"></small>
+            </div>
+        </div>        
+    </div>
+    <div class="col-md-2 offset-md-5">
         <input type="hidden" name="id_partida_antiga" value="{{id_partida_antiga}}">
         <button type="button" id="btnSubmit" class="btn btn-block my-4">{{ funcao }}</button>
         <button type="reset" id="btnReset" class="btn btn-warning btn-block my-4">Limpar</button>

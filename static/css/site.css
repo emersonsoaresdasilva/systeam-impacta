@@ -48,6 +48,12 @@ th {
     border:none!important;
 }
 
+/* .form-row{
+    -webkit-box-shadow: 0 3px 10px -6px #000;
+    box-shadow: 0 3px 10px -6px #000;
+    text-align: center;
+} */
+
 .form-control {
     -webkit-box-shadow: 0 3px 10px -6px #000;
     box-shadow: 0 3px 10px -6px #000;
@@ -87,7 +93,7 @@ th {
     -moz-transition: all .5s ease;
 } */
 
-/* imagens */
+/* Imagens */
 #imgAdmin {
     width: 30px;
 }
@@ -119,6 +125,10 @@ tbody tr:first-child td {
     width:500px;
 }
 .imgForm img {
+    width: 25%;
+}
+
+.imgFormPartida img{
     width: 25%;
 }
 
