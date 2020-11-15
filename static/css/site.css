@@ -16,6 +16,30 @@ main{
     min-height: 50.8vh;
 }
 
+.row-partida, .row-equipe{
+    display: flex;
+}
+
+.row-partida #campoPontosCasa,  .row-equipe #campoPontosVisitante{
+    flex:3;
+}
+
+.form-buttons{
+    margin: auto;
+    display: flex;
+}
+
+.form-buttons button{
+    margin-left: 2px;
+    flex: 1;
+}
+
+
+.row-partida .form-group{
+    flex:1;
+    margin-left: 3px;
+}
+
 nav {
     background-color: #2F4F4F;
 }

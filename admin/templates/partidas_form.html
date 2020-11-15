@@ -15,9 +15,9 @@
     </div>
     {% endfor %}
     <!-- Fim exibição de erros -->
-    <div class="col-md-8.5 offset-md-3">
-        <div class="form-row">
-            <div class="form-group col-md-3.1">
+    <div class="col-12">
+        <div class="form-row row-partida">
+            <div class="form-group">
                 <select class="form-control" id='campoEquipeCasa' name='equipecasa'>
                     {% for e in equipes %}
                         {% if e.sigla == equipe_casa.sigla %}
@@ -37,7 +37,7 @@
                 <small class="form-text text-muted">Gols do clube</small>
             </div>
 
-            <b style="padding: 10px; font-size: 15px;">vs</b> <!-- Ajustar para o arquivo CSS -->
+            <b style="padding: 10px; font-size: 15px;margin: 0px auto;">vs</b> <!-- Ajustar para o arquivo CSS -->
 
             <div class="col-md-2">
                 <input type="number" min="0" class="form-control" style="text-align: center;" id="campoPontosVisitante"
@@ -60,7 +60,7 @@
             </div>
         </div>        
     </div>
-    <div class="col-md-2 offset-md-5">
+    <div class="col-6 offset-3 form-buttons">
         <input type="hidden" name="id_partida_antiga" value="{{id_partida_antiga}}">
         <button type="button" id="btnSubmit" class="btn btn-block my-4">{{ funcao }}</button>
         <button type="reset" id="btnReset" class="btn btn-warning btn-block my-4">Limpar</button>

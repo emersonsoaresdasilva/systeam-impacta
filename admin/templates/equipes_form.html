@@ -6,7 +6,7 @@
 </div>
 
 <form method="POST" class="text-center" id="formEquipe" novalidate>
-    <div class="col-md-2 offset-md-5">
+    <div class="col-10 offset-1 row-partida">
         <!-- Exibição de erros -->
         {% for erro in erros %}
         <div class="form-group">
@@ -34,6 +34,9 @@
             <small class="form-text text-muted">Insira o local de origem do clube.</small>
             <small id="avisoLocal" class="form-text text-danger"></small>
         </div>
+
+    </div>
+    <div class="col-6 offset-3 form-buttons">
         <input type="hidden" name="sigla_antiga" value="{{sigla_antiga}}">
         <button type="button" id="btnSubmit" class="btn btn-block my-4">{{ funcao }}</button>
         <button type="reset" id="btnReset" class="btn btn-warning btn-block my-4">Limpar</button>
