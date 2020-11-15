@@ -18,57 +18,6 @@ class Equipe(object):
     def __str__(self):
         return f'{self.nome} ({self.sigla})'
 
-    @classmethod
-    def classificar(cls, dados):
-        pontos = []
-        vitorias = []
-        equipes = []
-       
-        # Listando equipes e pontos (list).
-        for dado in dados:
-            equipes.append(dado)
-            pontos.append(dados[dado]['pontos'])
-            vitorias.append(dados[dado]['vitorias'])
-        
-        #Ordenando dados por critérios
-        for criterio in [vitorias, pontos]:
-            ordenacoes = cls.ordernar_por(criterio, equipes, pontos, vitorias)
-            equipes = ordenacoes[0]
-            pontos = ordenacoes[1]
-            vitorias = ordenacoes[2]
-
-        # Retornando os dados ordenados.
-        dados_ordenados = {}
-        count = 1
-        for sigla in equipes:
-            dados_ordenados[sigla] = dados[sigla]
-            dados_ordenados[sigla]['posicao'] = count
-            count += 1
-        return dados_ordenados
-
-    @classmethod
-    def ordernar_por(cls, criterio, equipes, pontos, vitorias):
-        indices_ordenados = []
-        for _ in range(len(criterio)):
-            i = criterio.index(max(criterio)) #Índice do maior 'criterio' na lista.
-            indices_ordenados.append(i)
-            criterio[i] = -1
-        
-        equipes_ordenadas = cls.ordernar_lista_por_indice(indices_ordenados, equipes, equipes == criterio)
-        pontos_ordenados  = cls.ordernar_lista_por_indice(indices_ordenados, pontos, pontos == criterio)
-        vitorias_ordenadas  = cls.ordernar_lista_por_indice(indices_ordenados, vitorias, vitorias == criterio)
-
-        return [equipes_ordenadas, pontos_ordenados,  vitorias_ordenadas]
-
-    @classmethod
-    def ordernar_lista_por_indice(cls, indices, lista, is_criterio):
-        lista_ordenada = []
-        if is_criterio: return lista
-        for i in indices:
-            lista_ordenada.append(lista[i])
-        return lista_ordenada
-
-
 
 class Partida(object):
 

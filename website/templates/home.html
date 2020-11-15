@@ -18,21 +18,21 @@
                 <th class="font-weight-bold">Empates</th>
                 <th class="font-weight-bold">Derrotas</th>
             </div>
-            {% for sigla in dados %}
+            {% for equipe in classificacao %}
             <tr>
-                <td>{{ dados[sigla]['posicao'] }}° </td>
+                <td>{{ classificacao[equipe]['posicao'] }}° </td>
                 <td class="Clube">
                     {% if session['usermail']%}
-                    <a href="/admin/equipes/alterar/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
+                    <a href="/admin/equipes/alterar/{{equipe.sigla}}">{{ equipe.nome }}</a>
                     {% else %}
-                    <a href="/detalhes/{{ sigla }}">{{ dados[sigla]['objeto'].nome }}</a>
+                    <a href="/detalhes/{{ equipe.sigla }}">{{ equipe.nome }}</a>
                     {% endif %}
                 </td>
-                <td class="Pontos">{{ dados[sigla]['pontos'] }}</td>
-                <td class="Jogos">{{ dados[sigla]['jogos'] }}</td>
-                <td class="Vitórias">{{ dados[sigla]['vitorias'] }}</td>
-                <td class="Empates">{{ dados[sigla]['empates'] }}</td>
-                <td class="Derrotas">{{ dados[sigla]['derrotas'] }}</td>
+                <td class="Pontos">{{ classificacao[equipe]['pontos'] }}</td>
+                <td class="Jogos">{{ classificacao[equipe]['jogos'] }}</td>
+                <td class="Vitórias">{{ classificacao[equipe]['vitorias'] }}</td>
+                <td class="Empates">{{ classificacao[equipe]['empates'] }}</td>
+                <td class="Derrotas">{{ classificacao[equipe]['derrotas'] }}</td>
             </tr>
             {% endfor %}
         </tbody>

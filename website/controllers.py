@@ -11,21 +11,14 @@ website_bp = Blueprint(
 @website_bp.route('/')
 def home():
     if 'usermail' in session:
-        return redirect('admin')
+        return redirect(url_for('admin.home'))
     
-    #Revisar a estrutura de dados, ficou confusa
-    equipes = pegar_equipe()
-    dados = {}
-    for e in equipes:
-        dados[e.sigla] = obter_dados_da_equipe(e)
-        dados[e.sigla]['objeto'] = pegar_equipe(e.sigla)
-    dados = Equipe.classificar(dados)
+    classificacao = classificar_equipes()
 
     return render_template( 
         'home.html',
-        equipes=equipes,
-        dados=dados
-        )
+        classificacao=classificacao
+    )
 
 @website_bp.route('/detalhes/<sigla>')
 def detalhes(sigla):

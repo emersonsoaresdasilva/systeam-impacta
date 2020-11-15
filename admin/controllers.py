@@ -12,20 +12,12 @@ admin_bp = Blueprint(
 def home():
     if not 'usermail' in session:
         return redirect(url_for('website.home'))
-    equipes = pegar_equipe()
-    dados = {}
-    for e in equipes:
-        dados[e.sigla] = obter_dados_da_equipe(e)
-        dados[e.sigla]['objeto'] = pegar_equipe(e.sigla) 
+    
+    classificacao = classificar_equipes()
 
-    dados = Equipe.classificar(dados)
     return render_template( 
         'home.html',
-        equipes=equipes,
-        dados=dados
-    )
-    return redirect(
-        '/equipes'
+        classificacao=classificacao
     )
 
 @admin_bp.route('/equipes', methods=['GET','POST'])
