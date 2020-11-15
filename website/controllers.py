@@ -57,5 +57,4 @@ def entrar():
             return redirect(url_for('admin.home'))
         erros.append('E-mail ou senha incorretos.') 
     #GET
-    session['erros'] = erros
     return render_template('entrar.html')
