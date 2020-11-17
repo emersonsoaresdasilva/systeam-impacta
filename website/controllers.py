@@ -50,4 +50,4 @@ def entrar():
             return redirect(url_for('admin.home'))
         erros.append('E-mail ou senha incorretos.') 
     #GET
-    return render_template('entrar.html')
+    return render_template('entrar.html',erros=erros )

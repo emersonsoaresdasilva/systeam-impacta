@@ -6,16 +6,16 @@
 </div>
 
 <form method="POST" class="text-center" id="formEquipe" novalidate>
-    <div class="col-10 offset-1 row-partida">
-        <!-- Exibição de erros -->
-        {% for erro in erros %}
-        <div class="form-group">
-            <div class="text-danger" role="alert">
-                {{ erro }}
-            </div>
+    <!-- Exibição de erros -->
+    {% for erro in erros %}
+    <div class="form-group">
+        <div class="text-danger erros" role="alert">
+            {{ erro }}
         </div>
-        {% endfor %}
-        <!-- Fim Exibição de erros -->
+    </div>
+    {% endfor %}
+    <!-- Fim Exibição de erros -->
+    <div class="col-10 offset-1 row-partida">
         <div class="form-group">
             <input type="text" class="form-control" id="campoNome" name='nome'
                 value='{{ equipe.nome }}' placeholder="Nome" required>

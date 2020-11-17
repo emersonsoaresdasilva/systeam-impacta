@@ -2,9 +2,9 @@
 {% block main %}
 <form method="POST" class="text-center" novalidate>
     <p><img src="/static/images/icon-entrar.png" width="10%"></p>
-    {% for erro in session['erros'] %}
+    {% for erro in erros %}
     <div class="form-group">
-        <div class="text-danger" role="alert">
+        <div class="text-danger erros" role="alert">
             {{ erro }}
         </div>
     </div>

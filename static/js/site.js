@@ -8,4 +8,4 @@ if(a.href == window.location.href.split('?')[0]){
 })
 
 //Esconde as mensagens de erros após um tempo
-setTimeout(function(){document.querySelector('.text-danger').style.display = 'none'},3000)
+setTimeout(function(){document.querySelector('.erros').style.display = 'none'},3000)
