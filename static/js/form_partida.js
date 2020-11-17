@@ -51,6 +51,11 @@ function valida_equipes(equipeCasa, avisoCasa, equipeVisita, avisoVisita){
         avisoCasa.innerText = "Equipes iguais";
         avisoVisita.innerText = "Equipes iguais";
         return false
+    }else{
+        equipeCasa.classList.remove('is-invalid');
+        equipeVisita.classList.remove('is-invalid');
+        equipeCasa.classList.add('is-valid');
+        equipeVisita.classList.add('is-valid');
+        return true
     }
-    return true
 }

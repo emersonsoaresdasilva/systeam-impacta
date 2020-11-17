@@ -18,7 +18,10 @@ PARTIDAS = [
     Partida(EQUIPES[0], EQUIPES[3], 5, 2),
     Partida(EQUIPES[3], EQUIPES[0], 5, 3),
     Partida(EQUIPES[0], EQUIPES[4], 3, 5),
-    Partida(EQUIPES[4], EQUIPES[0], 3, 1)
+    Partida(EQUIPES[4], EQUIPES[0], 3, 1),
+    Partida(EQUIPES[5], EQUIPES[2], 0, 0),
+    Partida(EQUIPES[6], EQUIPES[2], 3, 3),
+    Partida(EQUIPES[7], EQUIPES[2], 1, 1)
 ]
 
 USUARIOS = [

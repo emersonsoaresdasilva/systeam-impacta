@@ -4,7 +4,7 @@ from admin.controllers import admin_bp
 
 
 app = Flask(__name__)
-app.secret_key = 'SENHA É SEGREDO'
+app.secret_key = 'Aiyd876da0d00s'
 app.register_blueprint(website_bp)
 app.register_blueprint(admin_bp, url_prefix="/admin")
 

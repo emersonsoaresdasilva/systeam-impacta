@@ -7,11 +7,11 @@ SysTeam: Equipes
 {% block main %}
 
 {% for msg in mensagens %}
-<script>alert("{{ msg }}")</script> <!-- Mensagens tem que ser passadas por sessão-->
+<script>alert("{{ msg }}")</script>
 {% endfor %}
 
 {% for erro in erros %}
-<div class="text-danger erros font-weight-normal">{{ erro }}</div> <!-- Erros tem que ser passadas por sessão-->
+<div class="text-danger erros font-weight-normal">{{ erro }}</div>
 {% endfor %}
 
 <div class="div-tabela">
