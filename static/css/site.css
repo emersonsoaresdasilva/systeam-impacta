@@ -1,0 +1,159 @@
+body {
+    font-family: monospace;
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    zoom: 1.48;
+}
+body footer {
+    text-align: center;
+    padding: 0px;
+    color: white;
+    background-color: darkslategrey;
+    bottom:0;
+}
+
+main{
+    min-height: 50.8vh;
+}
+
+.row-partida, .row-equipe{
+    display: flex;
+}
+
+.row-partida #campoPontosCasa,  .row-equipe #campoPontosVisitante{
+    flex:3;
+}
+
+.form-buttons{
+    margin: auto;
+    display: flex;
+}
+
+.form-buttons button{
+    margin-left: 2px;
+    flex: 1;
+}
+
+
+.row-partida .form-group{
+    flex:1;
+    margin-left: 3px;
+}
+
+nav {
+    background-color: #2F4F4F;
+}
+
+.navbar{margin-bottom: 10px;}
+
+table, td, th, div{
+    text-align: center;
+}
+a {
+    color:#538c8c;
+}
+
+a:hover, .active {
+    color: white;
+    text-decoration: none;
+}   
+
+td a {
+    color: #000000;
+}
+
+td a:hover {
+    color:#538c8c;
+}
+
+th {
+    font-size: 15px;
+    text-align: center;
+    border:none!important;
+}
+
+.form-control {
+    -webkit-box-shadow: 0 3px 10px -6px #000;
+    box-shadow: 0 3px 10px -6px #000;
+    text-align: center;
+}
+
+.vitoria {
+    color: #23b336;
+}
+
+.empate {
+    color: black;
+}
+
+.derrota {
+    color: #f32626;
+}
+
+.modal-header {
+    margin: auto;
+}
+
+.modal-body {
+    padding: 15px 0px 0px 0px;
+}
+
+.modal-footer {
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    margin: auto;
+    border: none;
+}
+
+#imgAdmin {
+    width: 30px;
+}
+
+.div-tabela {
+    background-color: #f8f8f8c7;
+    padding: 0px 0px 3px 0px;
+    box-shadow: 0px 0px 5px #000000d9;
+    margin-top: 30px;
+    width: 90%;
+    margin: 10px auto;  
+}
+
+.table {
+    margin-bottom: unset;
+}
+
+tbody tr:first-child {
+    background-color: #2f4f4f;
+    color:white;
+    border-top:none!important;
+}
+
+tbody tr:first-child td {
+    border-top:none!important;
+}
+
+.img-titulo img {
+    width:500px;
+}
+.imgForm img {
+    width: 25%;
+}
+
+.imgFormPartida img{
+    width: 25%;
+}
+
+.table .btn {
+    padding: 1px!important;
+}
+
+#btnSubmit {
+    background-color: #2F4F4F;
+    color: white;
+}
+
+#btnReset {
+    color: white !important;
+}

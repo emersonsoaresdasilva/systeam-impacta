@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block main %}
+<form method="POST" class="text-center" novalidate>
+    <p><img src="/static/images/icon-entrar.png" width="10%"></p>
+    {% for erro in erros %}
+    <div class="form-group">
+        <div class="text-danger erros" role="alert">
+            {{ erro }}
+        </div>
+    </div>
+    {% endfor %}
+    <div class="form-group">
+        <div class="col-6 offset-3">
+            <label for="exampleInputEmail1">Endereço de e-mail</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+                placeholder="E-mail" style="text-align: center" required>
+            <small id="emailHelp" class="form-text text-muted">Exemplo: admin@admin.com</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-6 offset-3">
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="senha" placeholder="Senha"
+                style="text-align: center" required>
+            <small id="senhaHelp" class="form-text text-muted">Exemplo: admin123*</small>
+        </div>
+    </div>
+    <div class="col-md-2 offset-md-5">
+        <button type="submit" id="btnSubmit" class="btn btn-block my-4">Entrar</button>
+    </div>
+</form>
+{% endblock %}

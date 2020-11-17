@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    SysTeam: Classificação
+{% endblock %}
+{% block main %}
+<div class="img-titulo">
+    <img src="/static/images/icon-classificacao-equipes.gif">
+</div>
+<div class="div-tabela">
+    <table class="table">
+        <tbody>
+            <div>
+                <th class="font-weight-bold">#</th>
+                <th class="font-weight-bold">Clube</th>
+                <th class="font-weight-bold">Pontos</th>
+                <th class="font-weight-bold">Jogos</th>
+                <th class="font-weight-bold">Vitórias</th>
+                <th class="font-weight-bold">Empates</th>
+                <th class="font-weight-bold">Derrotas</th>
+            </div>
+            {% for equipe in classificacao %}
+            <tr>
+                <td>{{ classificacao[equipe]['posicao'] }}° </td>
+                <td class="Clube">
+                    {% if session['usermail']%}
+                    <a href="/admin/equipes/alterar/{{equipe.sigla}}">{{ equipe.nome }}</a>
+                    {% else %}
+                    <a href="/detalhes/{{ equipe.sigla }}">{{ equipe.nome }}</a>
+                    {% endif %}
+                </td>
+                <td class="Pontos">{{ classificacao[equipe]['pontos'] }}</td>
+                <td class="Jogos">{{ classificacao[equipe]['jogos'] }}</td>
+                <td class="Vitórias">{{ classificacao[equipe]['vitorias'] }}</td>
+                <td class="Empates">{{ classificacao[equipe]['empates'] }}</td>
+                <td class="Derrotas">{{ classificacao[equipe]['derrotas'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

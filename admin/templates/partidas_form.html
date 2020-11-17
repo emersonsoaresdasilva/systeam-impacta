@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block main %}
+<!-- Imagem do formulário -->
+<div class="imgFormPartida">
+    <img src="/static/images/icon-partidas.png">
+</div>
+
+<form method="POST" id="formPartida" class="text-center">
+    <!-- Exibição de erros -->
+    {% for erro in erros %}
+    <div class="form-group">
+        <div class="text-danger erros" role="alert">
+            {{ erro }}
+        </div>
+    </div>
+    {% endfor %}
+    <!-- Fim exibição de erros -->
+    <div class="col-12">
+        <div class="form-row row-partida">
+            <div class="form-group">
+                <select class="form-control" id='campoEquipeCasa' name='equipecasa'>
+                    {% for e in equipes %}
+                        {% if e.sigla == equipe_casa.sigla %}
+                        <option selected value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {% else %}
+                        <option value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {%endif%}
+                    {% endfor %}
+                </select>
+                <small class="form-text text-muted">Clube da casa</small>
+                <small id="avisoEquipeCasa" class="form-text invalid-feedback"></small>
+            </div>
+            <div class="col-md-2">
+                <input type="number" min="0" class="form-control" style="text-align: center;" id='campoPontosCasa' name='pontoscasa'
+                    value='{{ partida.pontos_casa }}' placeholder="0" required>
+                <small class="form-text text-muted">Gols do clube</small>
+                <small id="avisoPontosCasa" class="form-text invalid-feedback"></small>
+                
+            </div>
+
+            <b style="padding: 10px; font-size: 15px;margin: 0px auto;">vs</b> <!-- Ajustar para o arquivo CSS -->
+
+            <div class="col-md-2">
+                <input type="number" min="0" class="form-control" style="text-align: center;" id="campoPontosVisitante"
+                    name='pontosvisitante' value='{{ partida.pontos_visita }}' placeholder="0" required>
+                <small class="form-text text-muted">Gols do clube</small>
+                <small id="avisoPontosVisitante" class="form-text invalid-feedback"></small>
+            </div>
+            <div class="form-group col-md-3.1">
+                <select class="form-control" id='campoEquipeVisitante' name='equipevisitante'>
+                    {% for e in equipes %}
+                        {% if e.sigla == equipe_visita.sigla %}
+                        <option selected value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {% else %}
+                        <option value="{{ e.sigla }}">{{ e.nome }}</option>
+                        {%endif%}
+                    {% endfor %}
+                </select>
+                <small class="form-text text-muted">Clube visitante</small>
+                <small id="avisoEquipeVisitante" class="form-text invalid-feedback"></small>
+            </div>
+        </div>        
+    </div>
+    <div class="col-6 offset-3 form-buttons">
+        <input type="hidden" name="id_partida_antiga" value="{{id_partida_antiga}}">
+        <button type="button" id="btnSubmit" class="btn btn-block my-4">{{ funcao }}</button>
+        <button type="reset" id="btnReset" class="btn btn-warning btn-block my-4">Limpar</button>
+    </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/form_partida.js"></script>
+{% endblock %}

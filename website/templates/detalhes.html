@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    SysTeam: Detalhes {{ equipe.sigla }}
+{% endblock %}
+{% block main %}
+<div class="img-titulo">
+    <h2>{{equipe.nome}}</h2>
+    <p>Sigla: {{ equipe.sigla }} | Origem: {{equipe.local}}</p>
+</div>
+<div class="div-tabela">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="font-weight-bold">Casa 🏡</td>
+                <td class="font-weight-bold">Placar Final ⚽</td>
+                <td class="font-weight-bold">Visitante 🏟️</td>
+            </tr>
+            {% for p in partidas %}
+            <tr>
+                <td class="font-weight-bold">{{ p.equipe_casa.nome}}</td>
+                
+                {% if not p.vencedor()%}
+                <td class="font-weight-bold empate">
+                {% elif p.vencedor().sigla ==  equipe.sigla %}
+                <td class="font-weight-bold vitoria">
+                {% else %}
+                <td class="font-weight-bold derrota">
+                {% endif %}
+                    {{ p.pontos_casa }} x {{ p.pontos_visita}}
+                </td>
+                <td class="font-weight-bold">{{ p.equipe_visita.nome }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
