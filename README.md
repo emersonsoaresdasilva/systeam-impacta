@@ -1,45 +1,51 @@
-# Controle de Campeonato
+<h1 align="center">Controle de Campeonato <img src="https://i.imgur.com/VQNKvo4.gif" width="5%"></h1>
 
-Descrição da atividade de construção de um sistema de controle de campeonatos.
+<img src="https://i.imgur.com/6JZU9Te.gif">
 
-## Sobre a Atividade
+# Fazendo deploy
 
-O objetivo desta atividade é produzir um sistema de controle de campeonatos, com uma tabela de controle de resultados, detalhes de partidas por equipes, e todo o controle de cadastros de novas equipes e partidas.
+<code>virtualenv venv --python=python3</code> ⤵
 
-Neste campeonato, um time consegue 3 pontos para cada vitória, 1 ponto para cada empate e 0 pontos por derrota. O número de vitórias é o primeiro critério de desempate e o de empates o segundo.
+<code>venv\Scripts\activate</code>
 
-## Tecnologias Utilizadas
+<code>pip install flask</code>
 
-O sistema será web, usando o microframework Flask no _backend_, com cadastros em um banco de dados SQLite3. No _frontend_ pode ser utilizada quaisquer bilbiotecas que vocês queiram usar.
+<code>python app.py</code> ✔
 
-## Itens da Atividade
+# Sobre o sistema
 
-A atividade será divida em duas grandes partes: navegação e páginas principais do _frontend_ e parte de cadastros (admin).
+O objetivo é produzir um sistema de controle de campeonatos, com uma tabela de controle de resultados, detalhes de partidas por equipes, e todo o controle de cadastros de        novas equipes e partidas. 
 
-### Parte 1 - Navegação e Páginas Principais
+Neste campeonato, um time consegue 3 pontos para cada vitória, 1 ponto para cada empate e 0 pontos por derrota. O número de vitórias é o primeiro critério de desempate.
 
-Para a primeira parte deve ser criada um _Blueprint_ do flask chamado **website** que terá as seguintes rotas configuradas nos seus respectivos _controllers_:
+# Tecnologias Utilizadas
+O sistema é web, usando o microframework Flask no back-end, com cadastros em um banco de dados em arquivo e no front-end foi utilizado bootstrap.
 
-- Home (/): A página inicial que mostrará o resultado atual do campeonato, mostrando as equipes ordenadas pelo número de pontos (e sua posição nesse caso), mostrando também: número de jogos, vitórias, empates e derrotas. Para cada equipe haverá um link para os detalhes de partidas deste time.
-- Detalhes da Equipe (/detalhes/{equipe}): Mostra uma lista de todas as partidas que o time apareceu, com o resultado e estilos diferentes para partidas ganhas, empatadas e perdidas.
-- Entrar (/entrar): O formulário de login, que receberá um e-mail e uma senha para fazer o login.
+# Resumo
+O sistema possui duas partes: navegação e páginas principais do front-end e parte de cadastros (admin).
 
-Todos as páginas devem possuir uma identidade visual com botões de navegação (preferencialmente no cabeçalho).
+# Parte 1 - Navegação e Páginas Principais
 
-### Parte 2 - Área Administrativa
+- <b>A página inicial:</b> Mostra o resultado atual do campeonato, mostrando as equipes ordenadas pelo número de pontos (e sua posição nesse caso), mostrando também: número de     jogos, vitórias, empates e derrotas. Para cada equipe há um link para os detalhes de partidas deste time.
 
-Na segunda parte deve ser feito outro _Blueprint_ chamado **admin** que terá as seguintes rotas:
+- <b>Detalhes da Equipe:</b> Mostra uma lista de todas as partidas que o time apareceu, com o resultado e estilos diferentes para partidas ganhas, empatadas e perdidas.
 
-- Admin (/admin): Área administrativa, que só pode ser acessada com o login feito, com caminhos para os cadastros de equipes e partidas, além do botão de sair (logout).
-- Equipes (/equipes): Listagem de todas as equipes cadastradas, mostrando o nome, sigla e local da equipe na lista, e botões de alteração e remoção da equipe. Além disso, na tela deve haver um botão de inclusão de nova equipe.
-  - Nova Equipe (/equipes/criar): Formulário de criação de nova equipe, para coletar o nome, sigla e local da equipe. Botão salvar e limpar. Ao salvar, deve voltar para a listagem.
-  - Aletar Equipe (/equipes/alterar/{equipe}): Formulário de alteração da equipe, com os campos de nome, sigla e local já preenchidos e prontos para alteração. Botão salvar e limpar. Ao salvar, deve voltar para a listagem.
-  - Remover Equipe (/equipes/deletar/{equipe}): Mostar uma janela de confirmação ao clicar em remover a equipe e, se confirmado, entrar nessa url para remover mesmo a equipe e voltar para a tela de listagem.
-- Partidas (/partidas): Listagem de todas as partidas cadastradas, mostrando o nome, sigla e local de ambas as equipes na lista, com o resultados, e botões de alteração e remoção da partida. Além disso, na tela deve haver um botão de inclusão de nova partida.
-  - Nova Partida (/partidas/criar): Formulário de criação de nova partida, para coletar o time da casa, o visitante e os pontos de cada um. Botão salvar e limpar. Ao salvar, deve voltar para a listagem.
-  - Aletar Partida (/partidas/alterar/{partida}): Formulário de alteração da partida, com os campos de time da casa, visitante e pontos de ambos já preenchidos e prontos para alteração. Botão salvar e limpar. Ao salvar, deve voltar para a listagem.
-  - Remover Partida (/partidas/deletar/{partida}): Mostar uma janela de confirmação ao clicar em remover a partida e, se confirmado, entrar nessa url para remover mesmo a partida e voltar para a tela de listagem.
+- <b>Entrar:</b> O formulário de login, que recebe um e-mail e uma senha para fazer o login.
 
-## Correção
+# Parte 2 - Área Administrativa
+- <b>Admin:</b> Área administrativa, que só pode ser acessada com o login feito, com caminhos para os cadastros de equipes e partidas, além do botão de sair (logout).
+- <b>Equipes:</b> Listagem de todas as equipes cadastradas, mostrando o nome, sigla e local da equipe na lista, e botões de alteração e remoção da equipe. Além disso, na tela há   um botão de inclusão de nova equipe.
+  - <b>Nova Equipe:</b> Formulário de criação de nova equipe, para coletar o nome, sigla e local da equipe. Botão salvar e limpar. Ao salvar volta para a listagem.
+  - <b>Alterar Equipe:</b> Formulário de alteração da equipe, com os campos de nome, sigla e local já preenchidos e prontos para alteração. Botão salvar e limpar ao salvar volta   para a listagem.
+    
+  - <b>Remover Equipe:</b> Mostra uma janela de confirmação ao clicar em remover a equipe e volta para a tela de listagem.
 
-A nota será proporcional ao número de testes que passarem, de acordo com os arquivos de testes. A parte de layout só será considerado na apresentação (não nos testes).
+- <b>Partidas:</b> Listagem de todas as partidas cadastradas, mostrando o nome, sigla e local de ambas as equipes na lista, com o resultados, e botões de alteração e remoção da    partida. Além disso, há um botão de inclusão de nova partida.
+
+  - <b>Nova Partida:</b> Formulário de criação de nova partida, para coletar o time da casa, o visitante e os pontos de cada um. Botão salvar e limpar.  
+    Ao salvar, volta para a listagem.
+    
+  - <b>Alterar Partida:</b> Formulário de alteração da partida, com os campos de time da casa, visitante e pontos de ambos já preenchidos e prontos para alteração.  
+    Botão salvar e limpar ao salvar volta para a listagem.
+    
+  - <b>Remover Partida:</b> Mostra uma janela de confirmação ao clicar em remover a partida e volta para a tela de listagem.
